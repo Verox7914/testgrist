@@ -138,27 +138,6 @@ function prepareList(lst, order) {
 }
 
 function updatequotation(row) {
-
-// Supporto per un numero variabile di articoli in Dettafli_Offerta
-if (Array.isArray(row.Items)) {
-    row.Items = row.Items.map((item, index) => ({
-        Description: item["Dettafli_Offerta.descrizione"] || "",
-        Quantity: item["Dettafli_Offerta.QTY"] || 0,
-        Total: item["Dettafli_Offerta.Totale_Riga"] || 0,
-        Price: item["Dettafli_Offerta.Prezzo_listino"] || 0,
-        Discount: item["Dettafli_Offerta.sconto"] || 0,
-        Code: item["Dettafli_Offerta.Codice_Articolo"] || "",
-    }));
-}
-
-// Gestione dati per "Offerte"
-row.Number = row["Offerte.ID_Offerta"] || "";
-row.Issued = row["Offerte.Data_Offerta"] || "";
-row.Due = row["Offerte.Data_Offerta"] || "";
-row.Subtotal = row["Offerte.Totale_Offerta_NO_VAT"] || 0;
-row.Taxes = row["Offerte.VAT"] || 0;
-row.Total = row["Offerte.Totale_Offerta"] || 0;
-
   try {
     data.status = '';
     if (row === null) {
