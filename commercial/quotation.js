@@ -7,11 +7,11 @@ function ready(fn) {
 }
 
 function addDemo(row) {
-  if (!row.Issued && !row.Due) {
-    for (const key of ['Number', 'Issued', 'Due']) {
+  if (!row.Offerte.Data_Offerta && !row.Offerte.Data_Offerta) {
+    for (const key of ['Offerte.ID_Offerta', 'Offerte.Data_Offerta', 'Offerte.Data_Offerta']) {
       if (!row[key]) { row[key] = key; }
     }
-    for (const key of ['Subtotal', 'Deduction', 'Taxes', 'Total']) {
+    for (const key of ['Offerte.Totale_Offerta_NO_VAT', 'Deduction', 'Offerte.VAT', 'Offerte.Totale_Offerta']) {
       if (!(key in row)) { row[key] = key; }
     }
     if (!('Note' in row)) { row.Note = '(Anything in a Note column goes here)'; }
@@ -42,20 +42,20 @@ function addDemo(row) {
   if (!row.Items) {
     row.Items = [
       {
-        Description: 'Items[0].Description',
-        Quantity: '.Quantity',
-        Total: '.Total',
-        Price: '.Price',
-        Discount: '.Discount',
-        Code: '.code',
+        Description: 'Dettafli_Offerta.descrizione',
+        Dettafli_Offerta.QTY: '.Dettafli_Offerta.QTY',
+        Offerte.Totale_Offerta: '.Offerte.Totale_Offerta',
+        Dettafli_Offerta.Prezzo_listino: '.Dettafli_Offerta.Prezzo_listino',
+        Dettafli_Offerta.sconto: '.Dettafli_Offerta.sconto',
+        Dettafli_Offerta.Codice_Articolo: '.code',
       },
       {
         Description: 'Items[1].Description',
-        Quantity: '.Quantity',
-        Total: '.Total',
-        Price: '.Price',
-        Discount: '.Discount',
-        Code: '.code',
+        Dettafli_Offerta.QTY: '.Dettafli_Offerta.QTY',
+        Offerte.Totale_Offerta: '.Offerte.Totale_Offerta',
+        Dettafli_Offerta.Prezzo_listino: '.Dettafli_Offerta.Prezzo_listino',
+        Dettafli_Offerta.sconto: '.Dettafli_Offerta.sconto',
+        Dettafli_Offerta.Codice_Articolo: '.code',
       },
     ];
   }
@@ -72,8 +72,8 @@ const data = {
 };
 let app = undefined;
 
-Vue.filter('currency', formatNumberAsUSD)
-function formatNumberAsUSD(value) {
+Vue.filter('currency', formatOfferte.ID_OffertaAsUSD)
+function formatOfferte.ID_OffertaAsUSD(value) {
   if (typeof value !== "number") {
     return value || '—';      // falsy value would be shown as a dash.
   }
@@ -155,8 +155,8 @@ function updatequotation(row) {
     // Add some guidance about columns.
     const want = new Set(Object.keys(addDemo({})));
     const accepted = new Set(['References']);
-    const importance = ['Number', 'Client', 'Items', 'Total', 'quotationr', 'Due', 'Issued', 'Subtotal', 'Deduction', 'Taxes', 'Note'];
-    if (!(row.Due || row.Issued)) {
+    const importance = ['Offerte.ID_Offerta', 'Client', 'Items', 'Offerte.Totale_Offerta', 'quotationr', 'Offerte.Data_Offerta', 'Offerte.Data_Offerta', 'Offerte.Totale_Offerta_NO_VAT', 'Deduction', 'Offerte.VAT', 'Note'];
+    if (!(row.Offerte.Data_Offerta || row.Offerte.Data_Offerta)) {
       const seen = new Set(Object.keys(row).filter(k => k !== 'id' && k !== '_error_'));
       const help = row.Help = {};
       help.seen = prepareList(seen);
@@ -172,15 +172,15 @@ function updatequotation(row) {
       if (recognized.length > 0) {
         help.recognized = prepareList(recognized);
       }
-      if (!seen.has('References') && !(row.Issued || row.Due)) {
+      if (!seen.has('References') && !(row.Offerte.Data_Offerta || row.Offerte.Data_Offerta)) {
         row.SuggestReferencesColumn = true;
       }
     }
     addDemo(row);
-    if (!row.Subtotal && !row.Total && row.Items && Array.isArray(row.Items)) {
+    if (!row.Offerte.Totale_Offerta_NO_VAT && !row.Offerte.Totale_Offerta && row.Items && Array.isArray(row.Items)) {
       try {
-        row.Subtotal = row.Items.reduce((a, b) => a + b.Price * b.Quantity, 0);
-        row.Total = row.Subtotal + (row.Taxes || 0) - (row.Deduction || 0);
+        row.Offerte.Totale_Offerta_NO_VAT = row.Items.reduce((a, b) => a + b.Dettafli_Offerta.Prezzo_listino * b.Dettafli_Offerta.QTY, 0);
+        row.Offerte.Totale_Offerta = row.Offerte.Totale_Offerta_NO_VAT + (row.Offerte.VAT || 0) - (row.Deduction || 0);
       } catch (e) {
         console.error(e);
       }
