@@ -5,13 +5,12 @@ function ready(fn) {
     document.addEventListener('DOMContentLoaded', fn);
   }
 }
-
 function addDemo(row) {
-  if (!row.Offerte.Data_Offerta && !row.Offerte.Data_Offerta) {
-    for (const key of ['Offerte.ID_Offerta', 'Offerte.Data_Offerta', 'Offerte.Data_Offerta']) {
+  if (!row.Issued && !row.Due) {
+    for (const key of ['Number', 'Issued', 'Due']) {
       if (!row[key]) { row[key] = key; }
     }
-    for (const key of ['Offerte.Totale_Offerta_NO_VAT', 'Deduction', 'Offerte.VAT', 'Offerte.Totale_Offerta']) {
+    for (const key of ['Subtotal', 'Deduction', 'Taxes', 'Total']) {
       if (!(key in row)) { row[key] = key; }
     }
     if (!('Note' in row)) { row.Note = '(Anything in a Note column goes here)'; }
@@ -42,26 +41,25 @@ function addDemo(row) {
   if (!row.Items) {
     row.Items = [
       {
-        Description: 'Dettafli_Offerta.descrizione',
-        Dettafli_Offerta.QTY: '.Dettafli_Offerta.QTY',
-        Offerte.Totale_Offerta: '.Offerte.Totale_Offerta',
-        Dettafli_Offerta.Prezzo_listino: '.Dettafli_Offerta.Prezzo_listino',
-        Dettafli_Offerta.sconto: '.Dettafli_Offerta.sconto',
-        Dettafli_Offerta.Codice_Articolo: '.code',
+        Description: 'Items[0].Description',
+        Quantity: '.Quantity',
+        Total: '.Total',
+        Price: '.Price',
+        Discount: '.Discount',
+        Code: '.code',
       },
       {
         Description: 'Items[1].Description',
-        Dettafli_Offerta.QTY: '.Dettafli_Offerta.QTY',
-        Offerte.Totale_Offerta: '.Offerte.Totale_Offerta',
-        Dettafli_Offerta.Prezzo_listino: '.Dettafli_Offerta.Prezzo_listino',
-        Dettafli_Offerta.sconto: '.Dettafli_Offerta.sconto',
-        Dettafli_Offerta.Codice_Articolo: '.code',
+        Quantity: '.Quantity',
+        Total: '.Total',
+        Price: '.Price',
+        Discount: '.Discount',
+        Code: '.code',
       },
     ];
   }
   return row;
 }
-
 const data = {
   count: 0,
   quotation: '',
@@ -71,15 +69,13 @@ const data = {
   haveRows: false,
 };
 let app = undefined;
-
-Vue.filter('currency', formatOfferte.ID_OffertaAsUSD)
-function formatOfferte.ID_OffertaAsUSD(value) {
+Vue.filter('currency', formatNumberAsUSD)
+function formatNumberAsUSD(value) {
   if (typeof value !== "number") {
     return value || '—';      // falsy value would be shown as a dash.
   }
   value = Math.round(value * 100) / 100;    // Round to nearest cent.
   value = (value === -0 ? 0 : value);       // Avoid negative zero.
-
   const result = value.toLocaleString('en', {
     style: 'currency', currency: 'USD'
   })
@@ -88,14 +84,12 @@ function formatOfferte.ID_OffertaAsUSD(value) {
   }
   return result;
 }
-
 Vue.filter('fallback', function(value, str) {
   if (!value) {
     throw new Error("Please provide column " + str);
   }
   return value;
 });
-
 Vue.filter('asDate', function(value) {
   if (typeof(value) === 'number') {
     value = new Date(value * 1000);
@@ -103,7 +97,6 @@ Vue.filter('asDate', function(value) {
   const date = moment.utc(value)
   return date.isValid() ? date.format('MMMM DD, YYYY') : value;
 });
-
 function tweakUrl(url) {
   if (!url) { return url; }
   if (url.toLowerCase().startsWith('http')) {
@@ -111,7 +104,6 @@ function tweakUrl(url) {
   }
   return 'https://' + url;
 };
-
 function handleError(err) {
   console.error(err);
   const target = app || data;
@@ -119,7 +111,6 @@ function handleError(err) {
   target.status = String(err).replace(/^Error: /, '');
   console.log(data);
 }
-
 function prepareList(lst, order) {
   if (order) {
     let orderedLst = [];
@@ -136,7 +127,6 @@ function prepareList(lst, order) {
   }
   return lst;
 }
-
 function updatequotation(row) {
   try {
     data.status = '';
@@ -151,12 +141,11 @@ function updatequotation(row) {
         throw new Error('Could not understand References column. ' + err);
       }
     }
-
     // Add some guidance about columns.
     const want = new Set(Object.keys(addDemo({})));
     const accepted = new Set(['References']);
-    const importance = ['Offerte.ID_Offerta', 'Client', 'Items', 'Offerte.Totale_Offerta', 'quotationr', 'Offerte.Data_Offerta', 'Offerte.Data_Offerta', 'Offerte.Totale_Offerta_NO_VAT', 'Deduction', 'Offerte.VAT', 'Note'];
-    if (!(row.Offerte.Data_Offerta || row.Offerte.Data_Offerta)) {
+    const importance = ['Number', 'Client', 'Items', 'Total', 'quotationr', 'Due', 'Issued', 'Subtotal', 'Deduction', 'Taxes', 'Note'];
+    if (!(row.Due || row.Issued)) {
       const seen = new Set(Object.keys(row).filter(k => k !== 'id' && k !== '_error_'));
       const help = row.Help = {};
       help.seen = prepareList(seen);
@@ -172,15 +161,15 @@ function updatequotation(row) {
       if (recognized.length > 0) {
         help.recognized = prepareList(recognized);
       }
-      if (!seen.has('References') && !(row.Offerte.Data_Offerta || row.Offerte.Data_Offerta)) {
+      if (!seen.has('References') && !(row.Issued || row.Due)) {
         row.SuggestReferencesColumn = true;
       }
     }
     addDemo(row);
-    if (!row.Offerte.Totale_Offerta_NO_VAT && !row.Offerte.Totale_Offerta && row.Items && Array.isArray(row.Items)) {
+    if (!row.Subtotal && !row.Total && row.Items && Array.isArray(row.Items)) {
       try {
-        row.Offerte.Totale_Offerta_NO_VAT = row.Items.reduce((a, b) => a + b.Dettafli_Offerta.Prezzo_listino * b.Dettafli_Offerta.QTY, 0);
-        row.Offerte.Totale_Offerta = row.Offerte.Totale_Offerta_NO_VAT + (row.Offerte.VAT || 0) - (row.Deduction || 0);
+        row.Subtotal = row.Items.reduce((a, b) => a + b.Price * b.Quantity, 0);
+        row.Total = row.Subtotal + (row.Taxes || 0) - (row.Deduction || 0);
       } catch (e) {
         console.error(e);
       }
@@ -188,7 +177,6 @@ function updatequotation(row) {
     if (row.quotationr && row.quotationr.Website && !row.quotationr.Url) {
       row.quotationr.Url = tweakUrl(row.quotationr.Website);
     }
-
     // Fiddle around with updating Vue (I'm not an expert).
     for (const key of want) {
       Vue.delete(data.quotation, key);
@@ -197,19 +185,16 @@ function updatequotation(row) {
       Vue.delete(data.quotation, key);
     }
     data.quotation = Object.assign({}, data.quotation, row);
-
     // Make quotation information available for debugging.
     window.quotation = row;
   } catch (err) {
     handleError(err);
   }
 }
-
 ready(function() {
   // Update the quotation anytime the document data changes.
   grist.ready();
   grist.onRecord(updatequotation);
-
   // Monitor status so we can give user advice.
   grist.on('message', msg => {
     // If we are told about a table but not which row to access, check the
@@ -225,16 +210,13 @@ ready(function() {
     if (msg.tableId) { app.tableConnected = true; }
     if (msg.tableId && !msg.dataChange) { app.RowConnected = true; }
   });
-
   Vue.config.errorHandler = function (err, vm, info)  {
     handleError(err);
   };
-
   app = new Vue({
     el: '#app',
     data: data
   });
-
   if (document.location.search.includes('demo')) {
     updatequotation(exampleData);
   }
