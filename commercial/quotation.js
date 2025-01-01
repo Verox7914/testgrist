@@ -8,7 +8,7 @@ function ready(fn) {
 
 function addDemo(row) {
   if (!row.Issued && !row.Due) {
-    for (const key of [Offerte.ID_Offerta', 'Offerte.Data_Offerta', 'Offerte.Data_Offerta]) {
+    for (const key of ['Offerte.ID_Offerta', 'Offerte.Data_Offerta', 'Offerte.Data_Offerta']) {
       if (!row[key]) { row[key] = key; }
     }
     for (const key of ['Subtotal', 'Deduction', 'Taxes', 'Total']) {
@@ -154,7 +154,7 @@ function updatequotation(row) {
     // Add some guidance about columns.
     const want = new Set(Object.keys(addDemo({})));
     const accepted = new Set(['References']);
-    const importance = ['Number', 'Client', 'Items', 'Total', 'quotationr', 'Due', 'Issued', 'Subtotal', 'Deduction', 'Taxes', 'Note'];
+    const importance = ['Offerte.ID_Offerta', 'Client', 'Items', 'Total', 'quotationr', 'Offerte.Data_Offerta', 'Offerte.Data_Offerta', 'Subtotal', 'Deduction', 'Taxes', 'Note'];
     if (!(row.Due || row.Issued)) {
       const seen = new Set(Object.keys(row).filter(k => k !== 'id' && k !== '_error_'));
       const help = row.Help = {};
