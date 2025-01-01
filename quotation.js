@@ -5,6 +5,7 @@ function ready(fn) {
     document.addEventListener('DOMContentLoaded', fn);
   }
 }
+
 function addDemo(row) {
   if (!row.Issued && !row.Due) {
     for (const key of ['Number', 'Issued', 'Due']) {
@@ -60,6 +61,7 @@ function addDemo(row) {
   }
   return row;
 }
+
 const data = {
   count: 0,
   quotation: '',
@@ -69,6 +71,7 @@ const data = {
   haveRows: false,
 };
 let app = undefined;
+
 Vue.filter('currency', formatNumberAsUSD)
 function formatNumberAsUSD(value) {
   if (typeof value !== "number") {
@@ -76,6 +79,7 @@ function formatNumberAsUSD(value) {
   }
   value = Math.round(value * 100) / 100;    // Round to nearest cent.
   value = (value === -0 ? 0 : value);       // Avoid negative zero.
+
   const result = value.toLocaleString('en', {
     style: 'currency', currency: 'USD'
   })
@@ -84,12 +88,14 @@ function formatNumberAsUSD(value) {
   }
   return result;
 }
+
 Vue.filter('fallback', function(value, str) {
   if (!value) {
     throw new Error("Please provide column " + str);
   }
   return value;
 });
+
 Vue.filter('asDate', function(value) {
   if (typeof(value) === 'number') {
     value = new Date(value * 1000);
@@ -97,6 +103,7 @@ Vue.filter('asDate', function(value) {
   const date = moment.utc(value)
   return date.isValid() ? date.format('MMMM DD, YYYY') : value;
 });
+
 function tweakUrl(url) {
   if (!url) { return url; }
   if (url.toLowerCase().startsWith('http')) {
@@ -104,6 +111,7 @@ function tweakUrl(url) {
   }
   return 'https://' + url;
 };
+
 function handleError(err) {
   console.error(err);
   const target = app || data;
@@ -111,6 +119,7 @@ function handleError(err) {
   target.status = String(err).replace(/^Error: /, '');
   console.log(data);
 }
+
 function prepareList(lst, order) {
   if (order) {
     let orderedLst = [];
@@ -127,6 +136,7 @@ function prepareList(lst, order) {
   }
   return lst;
 }
+
 function updatequotation(row) {
   try {
     data.status = '';
@@ -141,6 +151,7 @@ function updatequotation(row) {
         throw new Error('Could not understand References column. ' + err);
       }
     }
+
     // Add some guidance about columns.
     const want = new Set(Object.keys(addDemo({})));
     const accepted = new Set(['References']);
@@ -177,6 +188,7 @@ function updatequotation(row) {
     if (row.quotationr && row.quotationr.Website && !row.quotationr.Url) {
       row.quotationr.Url = tweakUrl(row.quotationr.Website);
     }
+
     // Fiddle around with updating Vue (I'm not an expert).
     for (const key of want) {
       Vue.delete(data.quotation, key);
@@ -185,16 +197,19 @@ function updatequotation(row) {
       Vue.delete(data.quotation, key);
     }
     data.quotation = Object.assign({}, data.quotation, row);
+
     // Make quotation information available for debugging.
     window.quotation = row;
   } catch (err) {
     handleError(err);
   }
 }
+
 ready(function() {
   // Update the quotation anytime the document data changes.
   grist.ready();
   grist.onRecord(updatequotation);
+
   // Monitor status so we can give user advice.
   grist.on('message', msg => {
     // If we are told about a table but not which row to access, check the
@@ -210,13 +225,16 @@ ready(function() {
     if (msg.tableId) { app.tableConnected = true; }
     if (msg.tableId && !msg.dataChange) { app.RowConnected = true; }
   });
+
   Vue.config.errorHandler = function (err, vm, info)  {
     handleError(err);
   };
+
   app = new Vue({
     el: '#app',
     data: data
   });
+
   if (document.location.search.includes('demo')) {
     updatequotation(exampleData);
   }
