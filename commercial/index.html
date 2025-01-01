@@ -25,11 +25,12 @@
             <li v-bind:class="[haveRows ? 'done' : '']">I need at least one row of data.</li>
             <li v-bind:class="[rowConnected ? 'done' : '']">I need <b>Select By</b> set.</li>
           </ul>
+          <!-- 
           <p>Examples:</p>
           <ul>
-            <!-- <li><a class="button" href="index.html?demo=1">A filled out quotation</a></li> -->
-            <!-- <li><a class="button" href="index.html?labels=1">A labelled quotation</a></li> -->
-          </ul>
+            <li><a class="button" href="index.html?demo=1">A filled out quotation</a></li>
+            <li><a class="button" href="index.html?labels=1">A labelled quotation</a></li>
+          </ul>-->
         </template>
         <template v-else>
           {{ status }}
