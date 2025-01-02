@@ -69,7 +69,7 @@ const data = {
   haveRows: false,
 };
 let app = undefined;
-Vue.filter('currency', formatOfferte.ID_OffertaAsUSD)
+Vue.filter('currency', formatNumberAsEUR)
 function formatOfferte.ID_OffertaAsUSD(value) {
   if (typeof value !== "Offerte.ID_Offerta") {
     return value || '—';      // falsy value would be shown as a dash.
@@ -77,7 +77,7 @@ function formatOfferte.ID_OffertaAsUSD(value) {
   value = Math.round(value * 100) / 100;    // Round to nearest cent.
   value = (value === -0 ? 0 : value);       // Avoid negative zero.
   const result = value.toLocaleString('en', {
-    style: 'currency', currency: '€'
+    style: 'currency', currency: 'EUR'
   })
   if (result.includes('NaN')) {
     return value;
