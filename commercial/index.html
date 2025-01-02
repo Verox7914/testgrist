@@ -25,12 +25,11 @@
             <li v-bind:class="[haveRows ? 'done' : '']">I need at least one row of data.</li>
             <li v-bind:class="[rowConnected ? 'done' : '']">I need <b>Select By</b> set.</li>
           </ul>
-          <!-- 
           <p>Examples:</p>
           <ul>
             <li><a class="button" href="index.html?demo=1">A filled out quotation</a></li>
             <li><a class="button" href="index.html?labels=1">A labelled quotation</a></li>
-          </ul>-->
+          </ul>
         </template>
         <template v-else>
           {{ status }}
@@ -48,53 +47,53 @@
           </div>
           
           <div class="supplier">
-            <div v-for="business in (quotation.quotationr ? [quotation.quotationr] : [])">
-              <template v-if="typeof(business) === 'string'">
-                <div class="address newlined">{{ business }}</div>
+            <div v-for="Anagrafica in (.Anagrafica ? [.Anagrafica] : [])">
+              <template v-if="typeof(Anagrafica) === 'string'">
+                <div class="address newlined">{{ Anagrafica }}</div>
               </template>
               <template v-else>
                 <div class="address">
-                  <span class="name">{{ business.Name }}</span><br />
-                  {{ business.Street1 }}<br />
-                  <template v-if="business.Street2">
-                    {{ business.Street2 }}<br />
+                  <span class="name">{{ Anagrafica.Nome_cliente }}</span><br />
+                  {{ Anagrafica.Indirizzo }}<br />
+                  <template v-if="Anagrafica.Street2">
+                    {{ Anagrafica.Street2 }}<br />
                   </template>
-                  {{ business.City }} {{ business.State }} {{ business.Zip }}<br />
-                  <template v-if="business.Country">
-                    {{ business.Country }}<br />
+                  {{ Anagrafica.Citta }} {{ Anagrafica.CAP }} {{ Anagrafica.Provincia }}<br />
+                  <template v-if="Anagrafica.Country">
+                    {{ Anagrafica.Country }}<br />
                   </template>
                 </div>
-                <template v-if="business.Email">
-                  <div class="email">{{ business.Email }}</div>
+                <template v-if="Anagrafica.Email">
+                  <div class="email">{{ Anagrafica.Email }}</div>
                 </template>
-                <template v-if="business.Phone">
-                  <div class="phone">{{ business.Phone }}</div>
+                <template v-if="Anagrafica.Phone">
+                  <div class="phone">{{ Anagrafica.Phone }}</div>
                 </template>
-                <template v-if="business.Website">
-                  <div class="website"><a v-bind:href="business.Url">{{ business.Website }}</a></div>
+                <template v-if="Anagrafica.Website">
+                  <div class="website"><a v-bind:href="Anagrafica.Url">{{ Anagrafica.Website }}</a></div>
                 </template>
               </template>
             </div>
           </div>
         </div>
         
-        <div class="client" v-for="business in (quotation.Client ? [quotation.Client] : [])">
+        <div class="client" v-for="Anagrafica in (quotation.Client ? [quotation.Client] : [])">
           <div class="title">Client</div>
           <div class="details">
-            <template v-if="typeof(business) === 'string'">
-              <div class="newlined">{{ business }}</div>
+            <template v-if="typeof(Anagrafica) === 'string'">
+              <div class="newlined">{{ Anagrafica }}</div>
             </template>
             <template v-else>
-              <div>{{ business.Name }}</div>
-              <template v-if="business.Street1">
-                {{ business.Street1 }},
+              <div>{{ Anagrafica.Name }}</div>
+              <template v-if="Anagrafica.Street1">
+                {{ Anagrafica.Street1 }},
               </template>
-              <template v-if="business.Street2">
-                {{ business.Street2 }},
+              <template v-if="Anagrafica.Street2">
+                {{ Anagrafica.Street2 }},
               </template>
-              {{ business.City }} {{ business.State }} {{ business.Zip }}
-              <template v-if="business.Country">
-                <br />{{ business.Country }}
+              {{ Anagrafica.City }} {{ Anagrafica.State }} {{ Anagrafica.Zip }}
+              <template v-if="Anagrafica.Country">
+                <br />{{ Anagrafica.Country }}
               </template>
             </template>
           </div>
