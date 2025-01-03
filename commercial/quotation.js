@@ -70,7 +70,7 @@ const data = {
 };
 let app = undefined;
 Vue.filter('currency', formatNumberAsEUR)
-function formatOfferte.ID_OffertaAsUSD(value) {
+function formatNumberAsEUR(value) {
   if (typeof value !== "Offerte.ID_Offerta") {
     return value || '—';      // falsy value would be shown as a dash.
   }
