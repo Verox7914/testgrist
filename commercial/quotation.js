@@ -71,7 +71,7 @@ const data = {
 let app = undefined;
 Vue.filter('currency', formatNumberAsEUR)
 function formatNumberAsEUR(value) {
-  if (typeof value !== "Offerte.ID_Offerta") {
+  if (typeof value !== "number") {
     return value || '—';      // falsy value would be shown as a dash.
   }
   value = Math.round(value * 100) / 100;    // Round to nearest cent.
@@ -91,7 +91,7 @@ Vue.filter('fallback', function(value, str) {
   return value;
 });
 Vue.filter('asDate', function(value) {
-  if (typeof(value) === 'Offerte.ID_Offerta') {
+  if (typeof(value) === 'number') {
     value = new Date(value * 1000);
   }
   const date = moment.utc(value)
