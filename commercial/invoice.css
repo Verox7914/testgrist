@@ -6,7 +6,7 @@ body {
 }
 
 .meta {
-  color: #ff8000;
+  color: #16a085;
 }
 
 .header .title {
@@ -40,15 +40,17 @@ body {
   padding: 1px;
   margin-top: 1em;
   margin-bottom: 1em;
-  background: #ff8000;
+  background: #16a085;
   -webkit-print-color-adjust: exact !important;
   color-adjust: exact !important;
+  font-size: 80%;
 }
 
 .client .title, .summary .title {
   margin-left: 4px;
   color: white;
   text-transform: uppercase;
+  font-size: 90%;
 }
 
 .client .details, .summary .details {
@@ -58,21 +60,27 @@ body {
 
 table.items {
   width: 100%;
-  border: 1px solid #ff8000;
+  border: 1px solid #16a085;
   border-collapse: collapse;
+  font-size: 90%;
+  text-align: left;
 }
 
 table.items th {
-  text-align: left;
+  text-align: center;
   color: white;
+  width: auto;
   text-transform: uppercase;
   font-weight: normal;
   padding: 4px;
+  font-size: 80%;
+  border: 1px solid #ffffff;
 }
 
 table.items td {
   background-color: var(--grist-theme-page-panels-main-panel-bg, white);
   padding: 4px;
+  font-size: 90%;
 }
 
 .client .title, .summary .title, table.items th, .help .title {
@@ -80,8 +88,27 @@ table.items td {
   padding-bottom: 10px;
 }
 
-.money, .number {
-  text-align: right;
+.money {
+  text-align: center;
+  width: 80px;
+  border: 1px solid #16a085;
+}
+
+.code {
+  text-align: center;
+  width: 50px;
+  border: 1px solid #16a085;
+}
+
+.number {
+  text-align: center;
+  width: 80px;
+  border: 1px solid #16a085;
+}
+.Description {
+  text-align: left;
+  width: auto;
+  border: 1px solid #16a085;
 }
 
 .name {
@@ -106,25 +133,33 @@ div.top {
 
 div.summary {
   display: flex;
-  width: 100%;
+  width: auto;
   padding: 0px;
   align-items: flex-end;
 }
 
-div.summary .part, div.summary .total {
+div.summary .part, div.summary .total  {
   padding: 10px;
 }
 
 div.summary .part {
   width: 20%;
   padding-right: 20px;
+  width: 120px;
 }
 
 div.summary .total {
   display: block;
   flex-grow: 1;
-  background: #000080;
-  font-size: 140%;
+  background: #0b5345;
+  font-size: 100%;
+  width: 31px;
+}
+
+div.summary .space {
+  display: block;
+  flex-grow: 1;
+  width: 195px;
 }
 
 div.summary {
@@ -159,8 +194,8 @@ div.summary::after {
 
 .thanks {
   text-align: right;
-  color: #C83200;
-  font-size: 200%;
+  color: #000000;
+  font-size: 100%;
 }
 
 div.instructions, .newlined, p.note {
