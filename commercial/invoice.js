@@ -18,7 +18,7 @@ function addDemo(row) {
   }
   if (!row.Invoicer) {
     row.Invoicer = {
-      Name: 'Invoicer.Name',
+      Name: 'Unifire S.r.l.',
       Street1: 'Invoicer.Street1',
       Street2: 'Invoicer.Street2',
       City: 'Invoicer.City',
