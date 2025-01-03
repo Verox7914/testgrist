@@ -7,21 +7,33 @@ function ready(fn) {
 }
 
 function addDemo(row) {
-  if (!row.Offerte || !row.Offerte.Data_Offerta) {
-    for (const key of ['Offerte.ID_Offerta', 'Offerte.Data_Offerta']) {
-      if (!row[key]) {
-        row[key] = key;
-      }
-    }
-    for (const key of ['Offerte.Netto_Offerta', 'Deduction', 'Offerte.VAT', 'Offerte.Totale_offerta']) {
-      if (!(key in row)) {
-        row[key] = key;
-      }
-    }
-    if (!('Note' in row)) {
-      row.Note = '(Anything in a Note column goes here)';
+  if (!row) {
+    console.error("Errore: 'row' è undefined o nullo.", row);
+    return;
+  }
+
+  if (!row.Offerte) {
+    row.Offerte = {};
+  }
+
+  if (!row.Offerte.Data_Offerta) {
+    row.Offerte.Data_Offerta = row.Date || "(Data non disponibile)";
+  }
+
+  for (const key of ['Offerte.ID_Offerta', 'Offerte.Data_Offerta']) {
+    if (!row[key]) {
+      row[key] = key;
     }
   }
+  for (const key of ['Offerte.Netto_Offerta', 'Deduction', 'Offerte.VAT', 'Offerte.Totale_offerta']) {
+    if (!(key in row)) {
+      row[key] = key;
+    }
+  }
+  if (!('Note' in row)) {
+    row.Note = '(Anything in a Note column goes here)';
+  }
+
   if (!row.invoicer) {
     row.invoicer = {
       Name: 'Unifire',
@@ -35,6 +47,7 @@ function addDemo(row) {
       Website: 'wwww.uni-fire.it'
     };
   }
+
   if (!row.Anagrafica) {
     row.Anagrafica = {
       Name: 'Client.Nome_Cliente',
@@ -45,6 +58,7 @@ function addDemo(row) {
       Zip: 'Client.CAP'
     };
   }
+
   if (!row.Dettagli_Offerta) {
     row.Dettagli_Offerta = [
       {
@@ -65,6 +79,7 @@ function addDemo(row) {
       },
     ];
   }
+
   return row;
 }
 
