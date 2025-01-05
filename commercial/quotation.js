@@ -6,6 +6,15 @@ function ready(fn) {
   }
 }
 
+async function resolveReference(field, displayColumn) {
+  if (typeof field === 'object' && field.tableId && field.rowId) {
+    const tableData = await grist.docApi.fetchTable(field.tableId);
+    const row = tableData.records.find(r => r.id === field.rowId);
+    return row ? row[displayColumn] : 'N/A';
+  }
+  return field; // Se non è un riferimento, restituisci il valore originale
+}
+
 function addDemo(row) {
   if (!row.Issued && !row.Due) {
     for (const key of ['Number', 'Issued', 'Due']) {
@@ -88,6 +97,13 @@ function formatNumberAsUSD(value) {
   return result;
 }
 
+Vue.filter('percentage', function(value) {
+  if (typeof value === "number") {
+    return `${Math.round(value * 100)}%`;
+  }
+  return value;
+});
+
 Vue.filter('fallback', function(value, str) {
   if (!value) {
     throw new Error("Please provide column " + str);
@@ -136,7 +152,7 @@ function prepareList(lst, order) {
   return lst;
 }
 
-function updatequotation(row) {
+async function updatequotation(row) {
   try {
     data.status = '';
     if (row === null) {
@@ -148,6 +164,14 @@ function updatequotation(row) {
         Object.assign(row, row.References);
       } catch (err) {
         throw new Error('Could not understand References column. ' + err);
+      }
+    }
+
+    // Resolve Code references
+    if (row.Items && Array.isArray(row.Items)) {
+      for (let item of row.Items) {
+        item.Code = await resolveReference(item.Code, 'Codice_Articolo');
+        item.Discount = item.Discount * 100; // Convert Discount to percentage
       }
     }
 
