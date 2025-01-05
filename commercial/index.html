@@ -112,7 +112,7 @@
           </template>
           <template v-else>
             <tr>
-              <th class="Code2">Code</th>
+              <th class="code">Code</th>
               <th class="Description">Description</th>
               <th class="money">List Price</th>
               <th class="number">Disc. (%)</th>
@@ -120,7 +120,7 @@
               <th class="money">Final Price</th>
             </tr>
             <tr v-for="item in quotation.Items">
-              <td class="Code2">{{ item.Code2 }}</td>
+              <td class="code">{{ item.Code }}</td>
               <td class="Description">{{ item.Description }}</td>
               <td class="money">{{ item.Price | currency }}</td>
               <td class="number">{{ item.Discount }}</td>
