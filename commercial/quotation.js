@@ -16,17 +16,17 @@ function addDemo(row) {
     }
     if (!('Note' in row)) { row.Note = '(Anything in a Note column goes here)'; }
   }
-  if (!row.invoicer) {
-    row.invoicer = {
-      Name: 'invoicer.Name',
-      Street1: 'invoicer.Street1',
-      Street2: 'invoicer.Street2',
-      City: 'invoicer.City',
+  if (!row.Invoicer) {
+    row.Invoicer = {
+      Name: 'Invoicer.Name',
+      Street1: 'Invoicer.Street1',
+      Street2: 'Invoicer.Street2',
+      City: 'Invoicer.City',
       State: '.State',
       Zip: '.Zip',
-      Email: 'invoicer.Email',
-      Phone: 'invoicer.Phone',
-      Website: 'invoicer.Website'
+      Email: 'Invoicer.Email',
+      Phone: 'Invoicer.Phone',
+      Website: 'Invoicer.Website'
     }
   }
   if (!row.Client) {
@@ -154,7 +154,7 @@ function updatequotation(row) {
     // Add some guidance about columns.
     const want = new Set(Object.keys(addDemo({})));
     const accepted = new Set(['References']);
-    const importance = ['Number', 'Client', 'Items', 'Total', 'invoicer', 'Due', 'Issued', 'Subtotal', 'Deduction', 'Taxes', 'Note', 'Code', 'Code2'];
+    const importance = ['Number', 'Client', 'Items', 'Total', 'Invoicer', 'Due', 'Issued', 'Subtotal', 'Deduction', 'Taxes', 'Note', 'Code', 'Code2'];
     if (!(row.Due || row.Issued)) {
       const seen = new Set(Object.keys(row).filter(k => k !== 'id' && k !== '_error_'));
       const help = row.Help = {};
