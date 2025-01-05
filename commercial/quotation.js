@@ -16,17 +16,17 @@ function addDemo(row) {
     }
     if (!('Note' in row)) { row.Note = '(Anything in a Note column goes here)'; }
   }
-  if (!row.quotationr) {
-    row.quotationr = {
-      Name: 'quotationr.Name',
-      Street1: 'quotationr.Street1',
-      Street2: 'quotationr.Street2',
-      City: 'quotationr.City',
+  if (!row.Invoicer) {
+    row.Invoicer = {
+      Name: 'Invoicer.Name',
+      Street1: 'Invoicer.Street1',
+      Street2: 'Invoicer.Street2',
+      City: 'Invoicer.City',
       State: '.State',
       Zip: '.Zip',
-      Email: 'quotationr.Email',
-      Phone: 'quotationr.Phone',
-      Website: 'quotationr.Website'
+      Email: 'Invoicer.Email',
+      Phone: 'Invoicer.Phone',
+      Website: 'Invoicer.Website'
     }
   }
   if (!row.Client) {
@@ -184,8 +184,8 @@ function updatequotation(row) {
         console.error(e);
       }
     }
-    if (row.quotationr && row.quotationr.Website && !row.quotationr.Url) {
-      row.quotationr.Url = tweakUrl(row.quotationr.Website);
+    if (row.Invoicer && row.Invoicer.Website && !row.Invoicer.Url) {
+      row.Invoicer.Url = tweakUrl(row.Invoicer.Website);
     }
 
     // Fiddle around with updating Vue (I'm not an expert).
