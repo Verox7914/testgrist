@@ -16,17 +16,17 @@ function addDemo(row) {
     }
     if (!('Note' in row)) { row.Note = '(Anything in a Note column goes here)'; }
   }
-  if (!row.quotationr) {
-    row.quotationr = {
-      Name: 'quotationr.Name',
-      Street1: 'quotationr.Street1',
-      Street2: 'quotationr.Street2',
-      City: 'quotationr.City',
+  if (!row.invoicer) {
+    row.invoicer = {
+      Name: 'invoicer.Name',
+      Street1: 'invoicer.Street1',
+      Street2: 'invoicer.Street2',
+      City: 'invoicer.City',
       State: '.State',
       Zip: '.Zip',
-      Email: 'quotationr.Email',
-      Phone: 'quotationr.Phone',
-      Website: 'quotationr.Website'
+      Email: 'invoicer.Email',
+      Phone: 'invoicer.Phone',
+      Website: 'invoicer.Website'
     }
   }
   if (!row.Client) {
