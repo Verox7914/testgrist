@@ -6,22 +6,6 @@ function ready(fn) {
   }
 }
 
-async function resolveExpandedReference(item) {
-  if (item.Code && typeof item.Code === 'object' && item.Code.tableId && item.Code.rowId) {
-    const tableData = await grist.docApi.fetchTable(item.Code.tableId);
-    const row = tableData.records.find(r => r.id === item.Code.rowId);
-    item.Code = row ? row.Codice_Articolo : 'N/A';
-  }
-  return item;
-}
-
-async function processItems(items) {
-  if (Array.isArray(items)) {
-    return Promise.all(items.map(resolveExpandedReference));
-  }
-  return items;
-}
-
 function addDemo(row) {
   if (!row.Issued && !row.Due) {
     for (const key of ['Number', 'Issued', 'Due']) {
@@ -104,13 +88,6 @@ function formatNumberAsUSD(value) {
   return result;
 }
 
-Vue.filter('percentage', function(value) {
-  if (typeof value === "number") {
-    return `${Math.round(value * 100)}%`;
-  }
-  return value;
-});
-
 Vue.filter('fallback', function(value, str) {
   if (!value) {
     throw new Error("Please provide column " + str);
@@ -159,7 +136,7 @@ function prepareList(lst, order) {
   return lst;
 }
 
-async function updatequotation(row) {
+function updatequotation(row) {
   try {
     data.status = '';
     if (row === null) {
@@ -172,11 +149,6 @@ async function updatequotation(row) {
       } catch (err) {
         throw new Error('Could not understand References column. ' + err);
       }
-    }
-
-    // Resolve Code references
-    if (row.Items && Array.isArray(row.Items)) {
-      row.Items = await processItems(row.Items);
     }
 
     // Add some guidance about columns.
