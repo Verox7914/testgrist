@@ -1,4 +1,4 @@
-function ready(fn) {
+Rfunction ready(fn) {
   if (document.readyState !== 'loading'){
     fn();
   } else {
@@ -72,7 +72,7 @@ const data = {
 let app = undefined;
 
 Vue.filter('currency', formatNumberAsUSD)
-function formatNumberAsUSD(value) {
+function formatNumberAsEUR(value) {
   if (typeof value !== "number") {
     return value || '—';      // falsy value would be shown as a dash.
   }
@@ -80,7 +80,7 @@ function formatNumberAsUSD(value) {
   value = (value === -0 ? 0 : value);       // Avoid negative zero.
 
   const result = value.toLocaleString('en', {
-    style: 'currency', currency: 'USD'
+    style: 'currency', currency: 'EUR'
   })
   if (result.includes('NaN')) {
     return value;
