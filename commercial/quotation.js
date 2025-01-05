@@ -6,13 +6,20 @@ function ready(fn) {
   }
 }
 
-async function resolveReference(field, displayColumn) {
-  if (typeof field === 'object' && field.tableId && field.rowId) {
-    const tableData = await grist.docApi.fetchTable(field.tableId);
-    const row = tableData.records.find(r => r.id === field.rowId);
-    return row ? row[displayColumn] : 'N/A';
+async function resolveExpandedReference(item) {
+  if (item.Code && typeof item.Code === 'object' && item.Code.tableId && item.Code.rowId) {
+    const tableData = await grist.docApi.fetchTable(item.Code.tableId);
+    const row = tableData.records.find(r => r.id === item.Code.rowId);
+    item.Code = row ? row.Codice_Articolo : 'N/A';
   }
-  return field; // Se non è un riferimento, restituisci il valore originale
+  return item;
+}
+
+async function processItems(items) {
+  if (Array.isArray(items)) {
+    return Promise.all(items.map(resolveExpandedReference));
+  }
+  return items;
 }
 
 function addDemo(row) {
@@ -169,10 +176,7 @@ async function updatequotation(row) {
 
     // Resolve Code references
     if (row.Items && Array.isArray(row.Items)) {
-      for (let item of row.Items) {
-        item.Code = await resolveReference(item.Code, 'Codice_Articolo');
-        item.Discount = item.Discount * 100; // Convert Discount to percentage
-      }
+      row.Items = await processItems(row.Items);
     }
 
     // Add some guidance about columns.
