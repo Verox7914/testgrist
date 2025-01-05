@@ -184,8 +184,8 @@ function updatequotation(row) {
         console.error(e);
       }
     }
-    if (row.invoicer && row.invoicer.Website && !row.invoicer.Url) {
-      row.invoicer.Url = tweakUrl(row.invoicer.Website);
+    if (row.Invoicer && row.Invoicer.Website && !row.Invoicer.Url) {
+      row.Invoicer.Url = tweakUrl(row.Invoicer.Website);
     }
 
     // Fiddle around with updating Vue (I'm not an expert).
