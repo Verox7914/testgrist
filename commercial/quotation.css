@@ -41,8 +41,8 @@ body {
   margin-top: 1em;
   margin-bottom: 1em;
   background: #16a085;
-  /*-webkit-print-color-adjust: exact !important;*/
-  /*color-adjust: exact !important;*/
+  -webkit-print-color-adjust: exact !important;
+  color-adjust: exact !important;
   font-size: 80%;
 }
 
@@ -92,30 +92,35 @@ table.items td {
   text-align: center;
   width: 80px;
   border: 1px solid #16a085;
+  background-color: var(--grist-theme-page-panels-main-panel-bg, white);
 }
 
 .code {
   text-align: center;
   width: 60px;
   border: 1px solid #16a085;
+  background-color: var(--grist-theme-page-panels-main-panel-bg, white);
 }
 
 .code2 {
   text-align: center;
   width: 60px;
   border: 1px solid #16a085;
+  background-color: var(--grist-theme-page-panels-main-panel-bg, white);
 }
 
 .number {
   text-align: center;
   width: 80px;
   border: 1px solid #16a085;
+  background-color: var(--grist-theme-page-panels-main-panel-bg, white);
 }
 
 .Description {
   text-align: left;
   width: auto;
   border: 1px solid #16a085;
+  background-color: var(--grist-theme-page-panels-main-panel-bg, white);
 }
 
 .name {
