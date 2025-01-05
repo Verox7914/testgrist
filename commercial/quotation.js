@@ -46,7 +46,7 @@ function addDemo(row) {
         Total: '.Total',
         Price: '.Price',
         Discount: '.Discount',
-        Code: '.Code'
+        Code: '.Code2'
       },
       {
         Description: 'Items[1].Description',
@@ -54,7 +54,7 @@ function addDemo(row) {
         Total: '.Total',
         Price: '.Price',
         Discount: '.Discount',
-        Code: '.Code'
+        Code: '.Code2'
       },
     ];
   }
