@@ -154,7 +154,7 @@ function updatequotation(row) {
     // Add some guidance about columns.
     const want = new Set(Object.keys(addDemo({})));
     const accepted = new Set(['References']);
-    const importance = ['Number', 'Client', 'Items', 'Total', 'quotationr', 'Due', 'Issued', 'Subtotal', 'Deduction', 'Taxes', 'Note'];
+    const importance = ['Number', 'Client', 'Items', 'Total', 'invoicer', 'Due', 'Issued', 'Subtotal', 'Deduction', 'Taxes', 'Note', 'Code', 'Code2'];
     if (!(row.Due || row.Issued)) {
       const seen = new Set(Object.keys(row).filter(k => k !== 'id' && k !== '_error_'));
       const help = row.Help = {};
@@ -184,8 +184,8 @@ function updatequotation(row) {
         console.error(e);
       }
     }
-    if (row.quotationr && row.quotationr.Website && !row.quotationr.Url) {
-      row.quotationr.Url = tweakUrl(row.quotationr.Website);
+    if (row.invoicer && row.invoicer.Website && !row.invoicer.Url) {
+      row.invoicer.Url = tweakUrl(row.invoicer.Website);
     }
 
     // Fiddle around with updating Vue (I'm not an expert).
