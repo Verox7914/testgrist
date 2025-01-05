@@ -62,7 +62,7 @@ table.items {
   width: 100%;
   border: 1px solid #16a085;
   border-collapse: collapse;
-  font-size: 90%;
+  font-size: 80%;
   text-align: left;
 }
 
@@ -103,7 +103,7 @@ table.items td {
 .number {
   text-align: center;
   width: 80px;
-  border: 5px solid #16a085;
+  border: 1px solid #16a085;
 }
 .Description {
   text-align: left;
