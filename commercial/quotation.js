@@ -1,4 +1,4 @@
-Rfunction ready(fn) {
+function ready(fn) {
   if (document.readyState !== 'loading'){
     fn();
   } else {
@@ -16,17 +16,17 @@ function addDemo(row) {
     }
     if (!('Note' in row)) { row.Note = '(Anything in a Note column goes here)'; }
   }
-  if (!row.Invoicer) {
-    row.Invoicer = {
-      Name: 'Invoicer.Name',
-      Street1: 'Invoicer.Street1',
-      Street2: 'Invoicer.Street2',
-      City: 'Invoicer.City',
+  if (!row.quotationr) {
+    row.quotationr = {
+      Name: 'quotationr.Name',
+      Street1: 'quotationr.Street1',
+      Street2: 'quotationr.Street2',
+      City: 'quotationr.City',
       State: '.State',
       Zip: '.Zip',
-      Email: 'Invoicer.Email',
-      Phone: 'Invoicer.Phone',
-      Website: 'Invoicer.Website'
+      Email: 'quotationr.Email',
+      Phone: 'quotationr.Phone',
+      Website: 'quotationr.Website'
     }
   }
   if (!row.Client) {
@@ -46,7 +46,7 @@ function addDemo(row) {
         Total: '.Total',
         Price: '.Price',
         Discount: '.Discount',
-        Code: '.Code2'
+        Code: '.Code'
       },
       {
         Description: 'Items[1].Description',
@@ -54,7 +54,7 @@ function addDemo(row) {
         Total: '.Total',
         Price: '.Price',
         Discount: '.Discount',
-        Code: '.Code2'
+        Code: '.Code'
       },
     ];
   }
@@ -72,7 +72,7 @@ const data = {
 let app = undefined;
 
 Vue.filter('currency', formatNumberAsUSD)
-function formatNumberAsEUR(value) {
+function formatNumberAsUSD(value) {
   if (typeof value !== "number") {
     return value || '—';      // falsy value would be shown as a dash.
   }
@@ -80,7 +80,7 @@ function formatNumberAsEUR(value) {
   value = (value === -0 ? 0 : value);       // Avoid negative zero.
 
   const result = value.toLocaleString('en', {
-    style: 'currency', currency: 'EUR'
+    style: 'currency', currency: 'USD'
   })
   if (result.includes('NaN')) {
     return value;
@@ -154,7 +154,7 @@ function updatequotation(row) {
     // Add some guidance about columns.
     const want = new Set(Object.keys(addDemo({})));
     const accepted = new Set(['References']);
-    const importance = ['Number', 'Client', 'Items', 'Total', 'Invoicer', 'Due', 'Issued', 'Subtotal', 'Deduction', 'Taxes', 'Note', 'Code', 'Code2'];
+    const importance = ['Number', 'Client', 'Items', 'Total', 'quotationr', 'Due', 'Issued', 'Subtotal', 'Deduction', 'Taxes', 'Note'];
     if (!(row.Due || row.Issued)) {
       const seen = new Set(Object.keys(row).filter(k => k !== 'id' && k !== '_error_'));
       const help = row.Help = {};
@@ -184,8 +184,8 @@ function updatequotation(row) {
         console.error(e);
       }
     }
-    if (row.Invoicer && row.Invoicer.Website && !row.Invoicer.Url) {
-      row.Invoicer.Url = tweakUrl(row.Invoicer.Website);
+    if (row.quotationr && row.quotationr.Website && !row.quotationr.Url) {
+      row.quotationr.Url = tweakUrl(row.quotationr.Website);
     }
 
     // Fiddle around with updating Vue (I'm not an expert).
