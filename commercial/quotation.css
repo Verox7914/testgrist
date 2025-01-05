@@ -55,7 +55,7 @@ body {
 
 .client .details, .summary .details {
   padding: 4px;
-  background-color: var(--grist-theme-page-panels-main-panel-bg, white);
+  background-color: white;
 }
 
 table.items {
@@ -78,7 +78,7 @@ table.items th {
 }
 
 table.items td {
-  background-color: var(--grist-theme-page-panels-main-panel-bg, white);
+  background-color: white;
   padding: 4px;
   font-size: 90%;
 }
