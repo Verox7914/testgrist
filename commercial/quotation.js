@@ -46,7 +46,7 @@ function addDemo(row) {
         Total: '.Total',
         Price: '.Price',
         Discount: '.Discount',
-        Code: '.Code2',
+        Code2: '.Code2',
         Taxes: '.Taxes'
       },
       {
@@ -55,7 +55,7 @@ function addDemo(row) {
         Total: '.Total',
         Price: '.Price',
         Discount: '.Discount',
-        Code: '.Code2',
+        Code2: '.Code2',
         Taxes: '.Taxes'
       },
     ];
