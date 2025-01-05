@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Grist quotation</title>
+    <title>Uni-Fire S.r.l.</title>
 
     <!-- A template for showing an quotation in a Custom Widget in Grist. -->
     <!-- Uses Vue.js, moment, and the Grist Plugin API -->
@@ -39,15 +39,16 @@
         <div class="top">
           <div class="block">
             <div class="header">
-              <div class="meta title">quotation</div>
+              <!--  <div class="meta title">quotation</div> -->
+              <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
             </div>
             <div class="info"><span class="meta">quotation Number</span> #{{ quotation.Number }}</div>
-            <div class="info" v-if="quotation.Issued"><div class="meta date-tag">Issued</div> {{ quotation.Issued | asDate }}</div>
-            <div class="info" v-if="quotation.Due"><div class="meta date-tag">Due</div> {{ quotation.Due | asDate }}</div>
+            <div class="info" v-if="quotation.Issued"><div class="meta date-tag">Date</div> {{ quotation.Issued | asDate }}</div>
+            <div class="info" v-if="quotation.Due"><div class="meta date-tag">Valid Since</div> {{ quotation.Due | asDate }}</div>
           </div>
           
           <div class="supplier">
-            <div v-for="business in (quotation.quotationr ? [quotation.quotationr] : [])">
+            <div v-for="business in (quotation.Invoicer ? [quotation.Invoicer] : [])">
               <template v-if="typeof(business) === 'string'">
                 <div class="address newlined">{{ business }}</div>
               </template>
@@ -120,7 +121,7 @@
               <th class="money">Final Price</th>
             </tr>
             <tr v-for="item in quotation.Items">
-              <td class="code2">{{ item.Code2 }}</td>
+              <td class="code2">{{ item.Code }}</td>
               <td class="Description">{{ item.Description }}</td>
               <td class="money">{{ item.Price | currency }}</td>
               <td class="number">{{ item.Discount }}</td>

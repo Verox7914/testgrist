@@ -1,6 +1,6 @@
 body {
   font-family: Sans-Serif;
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 5px;
 }
@@ -27,7 +27,7 @@ body {
 }
 
 .supplier {
-  color: #4682B4;
+  color: #000000;
   display: block;
 }
 
@@ -96,7 +96,13 @@ table.items td {
 
 .code {
   text-align: center;
-  width: 50px;
+  width: 60px;
+  border: 1px solid #16a085;
+}
+
+.code2 {
+  text-align: center;
+  width: 60px;
   border: 1px solid #16a085;
 }
 
@@ -105,6 +111,7 @@ table.items td {
   width: 80px;
   border: 1px solid #16a085;
 }
+
 .Description {
   text-align: left;
   width: auto;
