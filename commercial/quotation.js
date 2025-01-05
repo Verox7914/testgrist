@@ -152,6 +152,9 @@ function updatequotation(row) {
         throw new Error('Could not understand References column. ' + err);
       }
     }
+    if (row.Items && Array.isArray(row.Items)) {
+    calculateTotalTaxes(row);
+    }
 
     // Add some guidance about columns.
     const want = new Set(Object.keys(addDemo({})));
