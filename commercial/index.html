@@ -51,7 +51,7 @@
         <table class="c02">
           <thead>
             <tr>
-              <th class="Area">Area</th>
+              <th class="Standard">Area</th>
               <th class="Standard">Standard</th>
               <th class="number">Lenght (m)</th>
               <th class="number">Width (m)</th>
@@ -65,6 +65,7 @@
           </thead>
           <tbody>
             <tr v-for="item in quotation.Calcolo_volumi_CO2">
+              <td class="Standard">{{ Calcolo_volumi_CO2.Area }}</td>
               <td class="Standard">{{ Calcolo_volumi_CO2.Standard }}</td>
               <td class="number">{{ Calcolo_volumi_CO2.Lenght }}</td>
               <td class="number">{{ Calcolo_volumi_CO2.Width }}</td>
