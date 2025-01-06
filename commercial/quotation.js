@@ -139,7 +139,7 @@ function updatequotation(row) {
       throw new Error("(No data - not on row - please add or select a row)");
     }
 
-    console.log("GOT row:", JSON.stringify(row));
+    console.log("GOT row before processing:", JSON.stringify(row));
 
     if (row.References) {
       try {
@@ -162,8 +162,10 @@ function updatequotation(row) {
 
     // Gestisci dati Co2
     if (row.Co2 && Array.isArray(row.Co2)) {
-      console.log("Processing Co2 data:", row.Co2);
-      data.quotation.Co2 = row.Co2.map(item => {
+      console.log("Processing Co2 data before rounding:", row.Co2);
+
+      // Applica l'arrotondamento a ogni elemento di Co2
+      row.Co2 = row.Co2.map(item => {
         return {
           ...item,
           Lenght: roundToTwoDecimals(item.Lenght),
@@ -176,10 +178,14 @@ function updatequotation(row) {
         };
       });
 
+      data.quotation.Co2 = row.Co2;
+
+      console.log("Processed Co2 data after rounding:", data.quotation.Co2);
+
       // Calcola aggregati
-      row.TotalVolumeCo2 = row.Co2.reduce((sum, item) => sum + (parseFloat(item.VOLUME5Perc) || 0), 0);
-      row.TotalCO2Qty = row.Co2.reduce((sum, item) => sum + (parseFloat(item.CO2_DES_qty) || 0), 0);
-      row.TotalCylinders = row.Co2.reduce((sum, item) => sum + (parseFloat(item.CYLIDER_Qty) || 0), 0);
+      row.TotalVolumeCo2 = row.Co2.reduce((sum, item) => sum + (item.VOLUME5Perc || 0), 0);
+      row.TotalCO2Qty = row.Co2.reduce((sum, item) => sum + (item.CO2_DES_qty || 0), 0);
+      row.TotalCylinders = row.Co2.reduce((sum, item) => sum + (item.CYLIDER_Qty || 0), 0);
     } else {
       console.warn("Co2 data is missing or invalid:", row.Co2);
       data.quotation.Co2 = [];
@@ -196,8 +202,8 @@ function updatequotation(row) {
     }
     data.quotation = Object.assign({}, data.quotation, row);
 
-    // Debug: aggiorna la riga attiva per il debug
-    window.quotation = row;
+    console.log("Final quotation data:", data.quotation);
+
   } catch (err) {
     handleError(err);
   }
