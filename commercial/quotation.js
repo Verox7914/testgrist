@@ -27,7 +27,7 @@ function addDemo(row) {
       Email: 'Invoicer.Email',
       Phone: 'Invoicer.Phone',
       Website: 'Invoicer.Website'
-    }
+    };
   }
   if (!row.Client) {
     row.Client = {
@@ -36,29 +36,7 @@ function addDemo(row) {
       City: 'Client.City',
       State: '.State',
       Zip: '.Zip'
-    }
-  }
-  if (!row.Items) {
-    row.Items = [
-      {
-        Description: 'Items[0].Description',
-        Quantity: '.Quantity',
-        Total: '.Total',
-        Price: '.Price',
-        Discount: '.Discount',
-        Code2: '.Code2',
-        Taxes: '.Taxes'
-      },
-      {
-        Description: 'Items[1].Description',
-        Quantity: '.Quantity',
-        Total: '.Total',
-        Price: '.Price',
-        Discount: '.Discount',
-        Code2: '.Code2',
-        Taxes: '.Taxes'
-      },
-    ];
+    };
   }
   return row;
 }
@@ -73,7 +51,7 @@ const data = {
 };
 let app = undefined;
 
-Vue.filter('currency', formatNumberAsEUR)
+Vue.filter('currency', formatNumberAsEUR);
 function formatNumberAsEUR(value) {
   if (typeof value !== "number") {
     return value || '—';      // falsy value would be shown as a dash.
@@ -83,7 +61,7 @@ function formatNumberAsEUR(value) {
 
   const result = value.toLocaleString('en', {
     style: 'currency', currency: 'EUR'
-  })
+  });
   if (result.includes('NaN')) {
     return value;
   }
@@ -113,7 +91,7 @@ Vue.filter('asDate', function(value) {
   if (typeof(value) === 'number') {
     value = new Date(value * 1000);
   }
-  const date = moment.utc(value)
+  const date = moment.utc(value);
   return date.isValid() ? date.format('MMMM DD, YYYY') : value;
 });
 
@@ -178,6 +156,12 @@ function updatequotation(row) {
       row.Total = (row.Subtotal || 0) + (row.Taxes || 0) - (row.Deduction || 0);
     }
 
+    // Calcoli aggregati per NewTable
+    if (row.NewTable && Array.isArray(row.NewTable)) {
+      row.TotalVolume = row.NewTable.reduce((sum, item) => sum + (parseFloat(item.VOLUME5Perc) || 0), 0);
+      row.TotalCO2 = row.NewTable.reduce((sum, item) => sum + (parseFloat(item.CO2_CO2_DES_qty) || 0), 0);
+    }
+
     if (row.Invoicer && row.Invoicer.Website && !row.Invoicer.Url) {
       row.Invoicer.Url = tweakUrl(row.Invoicer.Website);
     }
@@ -225,11 +209,4 @@ ready(function() {
     el: '#app',
     data: data
   });
-
-  if (document.location.search.includes('demo')) {
-    updatequotation(exampleData);
-  }
-  if (document.location.search.includes('labels')) {
-    updatequotation({});
-  }
 });
