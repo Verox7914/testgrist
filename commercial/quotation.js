@@ -128,6 +128,10 @@ function prepareList(lst, order) {
   return lst;
 }
 
+function roundToTwoDecimals(value) {
+  return Math.round(value * 100) / 100;
+}
+
 function updatequotation(row) {
   try {
     data.status = '';
@@ -159,7 +163,18 @@ function updatequotation(row) {
     // Gestisci dati Co2
     if (row.Co2 && Array.isArray(row.Co2)) {
       console.log("Processing Co2 data:", row.Co2);
-      data.quotation.Co2 = row.Co2;
+      data.quotation.Co2 = row.Co2.map(item => {
+        return {
+          ...item,
+          Lenght: roundToTwoDecimals(item.Lenght),
+          Width: roundToTwoDecimals(item.Width),
+          Height: roundToTwoDecimals(item.Height),
+          Area2: roundToTwoDecimals(item.Area2),
+          VOLUME5Perc: roundToTwoDecimals(item.VOLUME5Perc),
+          FLOODING_FACTOR: roundToTwoDecimals(item.FLOODING_FACTOR),
+          CO2_DES_qty: roundToTwoDecimals(item.CO2_DES_qty)
+        };
+      });
 
       // Calcola aggregati
       row.TotalVolumeCo2 = row.Co2.reduce((sum, item) => sum + (parseFloat(item.VOLUME5Perc) || 0), 0);
