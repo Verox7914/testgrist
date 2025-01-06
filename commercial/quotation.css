@@ -22,12 +22,15 @@ body {
 
 .info .meta {
   text-transform: uppercase;
-  color: red;
+  color: black;
   font-weight: normal;
 }
 
 .info .meta::after {
   content: " :";
+  text-transform: uppercase;
+  color: black;
+  font-weight: normal;
 }
 
 .supplier {
