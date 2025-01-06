@@ -235,6 +235,20 @@ div.instructions, .newlined, p.note {
   div.print {
     display: none;
   }
+
+  table.items {
+    page-break-inside: auto;
+  }
+  table.items thead {
+    display: table-header-group;
+  }
+  table.items tbody {
+    display: table-row-group;
+  }
+  table.items tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
 }
 
 div.print {
@@ -353,20 +367,4 @@ div.column-name {
   margin-top: 1px;
   margin-bottom: 1px;
   border-radius: 0.25em;
-}
-
-@media print {
-  table.items {
-    page-break-inside: auto;
-  }
-  table.items thead {
-    display: table-header-group;
-  }
-  table.items tbody {
-    display: table-row-group;
-  }
-  table.items tr {
-    page-break-inside: avoid;
-    page-break-after: auto;
-  }
 }
