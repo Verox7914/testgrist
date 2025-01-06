@@ -156,10 +156,11 @@ function updatequotation(row) {
       row.Total = (row.Subtotal || 0) + (row.Taxes || 0) - (row.Deduction || 0);
     }
 
-    // Calcoli aggregati per NewTable
-    if (row.NewTable && Array.isArray(row.NewTable)) {
-      row.TotalVolume = row.NewTable.reduce((sum, item) => sum + (parseFloat(item.VOLUME5Perc) || 0), 0);
-      row.TotalCO2 = row.NewTable.reduce((sum, item) => sum + (parseFloat(item.CO2_CO2_DES_qty) || 0), 0);
+    // Gestisci dati Co2
+    if (row.Co2 && Array.isArray(row.Co2)) {
+      row.TotalVolumeCo2 = row.Co2.reduce((sum, item) => sum + (parseFloat(item.VOLUME5Perc) || 0), 0);
+      row.TotalCO2Qty = row.Co2.reduce((sum, item) => sum + (parseFloat(item.CO2_DES_qty) || 0), 0);
+      row.TotalCylinders = row.Co2.reduce((sum, item) => sum + (parseFloat(item.CYLIDER_Qty) || 0), 0);
     }
 
     if (row.Invoicer && row.Invoicer.Website && !row.Invoicer.Url) {
