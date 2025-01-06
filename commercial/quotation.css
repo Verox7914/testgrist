@@ -213,14 +213,14 @@ div.summary::after {
   text-align: Left;
   color: #000000;
   font-size: 60%;
-  border: 1px solid #000000;
+  border: 1px solid #16a085;
 }
 
 .notes {
   text-align: Left;
   color: #000000;
   font-size: 60%;
-  border: 1px solid #000000;
+  border: 1px solid #16a085;
 }
 
 div.instructions, .newlined, p.note {
