@@ -33,6 +33,11 @@ body {
   font-weight: normal;
 }
 
+#app .info .meta {
+    color: black;
+}
+
+
 .supplier {
   color: #000000;
   display: block;
