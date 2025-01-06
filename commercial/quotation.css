@@ -37,6 +37,18 @@ body {
     color: black;
 }
 
+.info .meta {
+  color: black !important; /* Forza il colore nero */
+}
+
+.info .meta::after {
+  color: black !important; /* Forza il colore per il contenuto pseudo-elemento */
+}
+
+.info {
+  color: black !important; /* Colore per qualsiasi testo nella classe info */
+}
+
 
 .supplier {
   color: #000000;
