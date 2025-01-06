@@ -27,7 +27,7 @@ body {
 }
 
 div.info span.meta {
-  color: white;
+  color: black;
 }
 
 .info .meta::after {
