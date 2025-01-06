@@ -102,7 +102,7 @@
         </div>
 
         
-            <table class="items" v-if="quotation.Calcolo_volumi_CO2 && quotation.Calcolo_volumi_CO2.length > 0">
+            <table class="items" v-if="quotation.Co2 && quotation.Co2.length > 0">
               <thead>
                 <tr>
                   <th class="Standard">Area</th>
@@ -118,7 +118,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="item in quotation.Calcolo_volumi_CO2" :key="item.id">
+                <tr v-for="item in quotation.Co2" :key="item.id">
                   <td class="Standard">{{ item.Area }}</td>
                   <td class="Standard">{{ item.Standard }}</td>
                   <td class="number">{{ item.Lenght }}</td>
