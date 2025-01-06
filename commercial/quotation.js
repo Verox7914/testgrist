@@ -166,6 +166,12 @@ function updatequotation(row) {
       }
     }
 
+    //calcolare le tasse
+    if (row.Items && Array.isArray(row.Items)) {
+      calculateTotalTaxes(row);
+    }
+
+    
     // Add some guidance about columns.
     const want = new Set(Object.keys(addDemo({})));
     const accepted = new Set(['References']);
