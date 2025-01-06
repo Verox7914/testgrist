@@ -90,7 +90,7 @@ function formatNumberAsEUR(value) {
   return result;
 }
 
-//funzione calcolare tasse
+// Funzione per calcolare le tasse
 function calculateTotalTaxes(row) {
   if (row.Items && Array.isArray(row.Items)) {
     try {
@@ -101,7 +101,6 @@ function calculateTotalTaxes(row) {
     }
   }
 }
-
 
 Vue.filter('fallback', function(value, str) {
   if (!value) {
@@ -157,7 +156,9 @@ function updatequotation(row) {
     if (row === null) {
       throw new Error("(No data - not on row - please add or select a row)");
     }
+
     console.log("GOT...", JSON.stringify(row));
+
     if (row.References) {
       try {
         Object.assign(row, row.References);
@@ -166,59 +167,29 @@ function updatequotation(row) {
       }
     }
 
-    //calcolare le tasse
+    // Calcola Subtotal come somma dei valori definitivi di Total negli Items
     if (row.Items && Array.isArray(row.Items)) {
+      row.Subtotal = row.Items.reduce((sum, item) => sum + (item.Total || 0), 0);
+
+      // Calcola Taxes come somma dei valori definitivi di Taxes negli Items
       calculateTotalTaxes(row);
+
+      // Calcola il valore globale Total come somma di Subtotal e Taxes
+      row.Total = (row.Subtotal || 0) + (row.Taxes || 0) - (row.Deduction || 0);
     }
 
-    
-    // Add some guidance about columns.
-    const want = new Set(Object.keys(addDemo({})));
-    const accepted = new Set(['References']);
-    const importance = ['Number', 'Client', 'Items', 'Total', 'Invoicer', 'Due', 'Issued', 'Subtotal', 'Deduction', 'Taxes', 'Note', 'Code', 'Code2'];
-    if (!(row.Due || row.Issued)) {
-      const seen = new Set(Object.keys(row).filter(k => k !== 'id' && k !== '_error_'));
-      const help = row.Help = {};
-      help.seen = prepareList(seen);
-      const missing = [...want].filter(k => !seen.has(k));
-      const ignoring = [...seen].filter(k => !want.has(k) && !accepted.has(k));
-      const recognized = [...seen].filter(k => want.has(k) || accepted.has(k));
-      if (missing.length > 0) {
-        help.expected = prepareList(missing, importance);
-      }
-      if (ignoring.length > 0) {
-        help.ignored = prepareList(ignoring);
-      }
-      if (recognized.length > 0) {
-        help.recognized = prepareList(recognized);
-      }
-      if (!seen.has('References') && !(row.Issued || row.Due)) {
-        row.SuggestReferencesColumn = true;
-      }
-    }
-    addDemo(row);
-    if (!row.Subtotal && !row.Total && row.Items && Array.isArray(row.Items)) {
-      try {
-        row.Subtotal = row.Items.reduce((a, b) => a + b.Price * b.Quantity, 0);
-        row.Total = row.Subtotal + (row.Taxes || 0) - (row.Deduction || 0);
-      } catch (e) {
-        console.error(e);
-      }
-    }
     if (row.Invoicer && row.Invoicer.Website && !row.Invoicer.Url) {
       row.Invoicer.Url = tweakUrl(row.Invoicer.Website);
     }
 
-    // Fiddle around with updating Vue (I'm not an expert).
+    // Aggiunge informazioni aggiuntive e suggerimenti sulle colonne
+    const want = new Set(Object.keys(addDemo({})));
     for (const key of want) {
-      Vue.delete(data.quotation, key);
-    }
-    for (const key of ['Help', 'SuggestReferencesColumn', 'References']) {
       Vue.delete(data.quotation, key);
     }
     data.quotation = Object.assign({}, data.quotation, row);
 
-    // Make quotation information available for debugging.
+    // Debug: aggiorna la riga attiva per il debug
     window.quotation = row;
   } catch (err) {
     handleError(err);
