@@ -22,12 +22,8 @@ body {
 
 .info .meta {
   text-transform: uppercase;
-  color: black;
-  font-weight: bold;
-}
-
-div.info span.meta {
-  color: black;
+  color: red;
+  font-weight: normal;
 }
 
 .info .meta::after {
