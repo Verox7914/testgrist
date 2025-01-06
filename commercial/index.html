@@ -105,8 +105,8 @@
             <table class="items" v-if="quotation.Co2 && quotation.Co2.length > 0">
               <thead>
                 <tr>
-                  <th class="Standard">Area</th>
-                  <th class="Standard">Standard</th>
+                  <th class="number">Area</th>
+                  <th class="number">Standard</th>
                   <th class="number">Length (m)</th>
                   <th class="number">Width (m)</th>
                   <th class="number">Height (m)</th>
@@ -119,8 +119,8 @@
               </thead>
               <tbody>
                 <tr v-for="item in quotation.Co2" :key="item.id">
-                  <td class="Standard">{{ item.Area }}</td>
-                  <td class="Standard">{{ item.Standard }}</td>
+                  <td class="number">{{ item.Area }}</td>
+                  <td class="number">{{ item.Standard }}</td>
                   <td class="number">{{ item.Lenght }}</td>
                   <td class="number">{{ item.Width }}</td>
                   <td class="number">{{ item.Height }}</td>
