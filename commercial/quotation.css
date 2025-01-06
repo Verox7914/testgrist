@@ -207,6 +207,13 @@ div.summary::after {
   text-align: right;
   color: #000000;
   font-size: 100%;
+  border: 1px solid #000000;
+}
+
+.notes {
+  text-align: Left;
+  color: #000000;
+  font-size: 100%;
 }
 
 div.instructions, .newlined, p.note {
