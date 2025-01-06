@@ -355,3 +355,18 @@ div.column-name {
   border-radius: 0.25em;
 }
 
+@media print {
+  table.items {
+    page-break-inside: auto;
+  }
+  table.items thead {
+    display: table-header-group;
+  }
+  table.items tbody {
+    display: table-row-group;
+  }
+  table.items tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+}
