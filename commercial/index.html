@@ -102,36 +102,36 @@
         </div>
 
         
-        <table class="items">
-          <thead>
-            <tr>
-              <th class="Standard">Area</th>
-              <th class="Standard">Standard</th>
-              <th class="number">Lenght (m)</th>
-              <th class="number">Width (m)</th>
-              <th class="number">Height (m)</th>
-              <th class="number">Area m2</th>
-              <th class="number">VOLUME m^3 - 5%/th>
-              <th class="number">FLOODING FACTOR</th>
-              <th class="number">CO2 Design Q,TY</th>
-              <th class="number">CYLIDER Qty</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in quotation.Calcolo_volumi_CO2">
-              <td class="Standard">{{ Calcolo_volumi_CO2.Area }}</td>
-              <td class="Standard">{{ Calcolo_volumi_CO2.Standard }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.Lenght }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.Width }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.Height }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.Area }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.VOLUME5Perc }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.FLOODING_FACTOR }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.CO2_DES_qty }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.CYLIDER_Qty }}</td>
-            </tr>
-          </tbody>
-        </table>
+            <table class="items" v-if="quotation.Calcolo_volumi_CO2 && quotation.Calcolo_volumi_CO2.length > 0">
+              <thead>
+                <tr>
+                  <th class="Standard">Area</th>
+                  <th class="Standard">Standard</th>
+                  <th class="number">Length (m)</th>
+                  <th class="number">Width (m)</th>
+                  <th class="number">Height (m)</th>
+                  <th class="number">Area m²</th>
+                  <th class="number">VOLUME m³ - 5%</th>
+                  <th class="number">FLOODING FACTOR</th>
+                  <th class="number">CO2 Design Qty</th>
+                  <th class="number">CYLINDER Qty</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="item in quotation.Calcolo_volumi_CO2" :key="item.id">
+                  <td class="Standard">{{ item.Area }}</td>
+                  <td class="Standard">{{ item.Standard }}</td>
+                  <td class="number">{{ item.Lenght }}</td>
+                  <td class="number">{{ item.Width }}</td>
+                  <td class="number">{{ item.Height }}</td>
+                  <td class="number">{{ item.Area2 }}</td>
+                  <td class="number">{{ item.VOLUME5Perc }}</td>
+                  <td class="number">{{ item.FLOODING_FACTOR }}</td>
+                  <td class="number">{{ item.CO2_DES_qty }}</td>
+                  <td class="number">{{ item.CYLIDER_Qty }}</td>
+                </tr>
+              </tbody>
+            </table>
 
         
         <table class="items">
