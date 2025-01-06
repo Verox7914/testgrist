@@ -102,7 +102,7 @@ table.items {
   text-align: left;
 }
 
-table.items-th {
+table.items th {
   text-align: center;
   color: white;
   text-transform: uppercase;
@@ -112,31 +112,11 @@ table.items-th {
   border: 1px solid #ffffff;
 }
 
-table.items-td {
+table.items td {
   background-color: white;
   padding: 4px;
   font-size: 90%;
   color: black;
-}
-
-.client-title {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.summary-title {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-table.items-th {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.help-title {
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 /* Column Styles */
@@ -147,12 +127,6 @@ table.items-th {
 }
 
 .code {
-  text-align: center;
-  width: 55px;
-  border: 1px solid #16a085;
-}
-
-.code2 {
   text-align: center;
   width: 55px;
   border: 1px solid #16a085;
@@ -203,11 +177,11 @@ div.summary {
   border-bottom-right-radius: 2em;
 }
 
-div.summary-part {
+div.summary .part {
   padding: 10px;
 }
 
-div.summary-total {
+div.summary .total {
   display: block;
   flex-grow: 1;
   background: #0b5345;
@@ -216,17 +190,13 @@ div.summary-total {
   border-bottom-right-radius: 0.5em;
 }
 
-div.summary-space {
+div.summary .space {
   display: block;
   flex-grow: 1;
   width: 195px;
 }
 
-div.summary-title {
-  text-align: right;
-}
-
-div.summary-details {
+div.summary .title, div.summary .details {
   text-align: right;
 }
 
@@ -254,29 +224,14 @@ div.summary::after {
   font-size: 100%;
 }
 
-.note {
+.note, .notes {
   text-align: left;
   color: #000000;
   font-size: 75%;
   border: 1px solid #16a085;
 }
 
-.notes {
-  text-align: left;
-  color: #000000;
-  font-size: 75%;
-  border: 1px solid #16a085;
-}
-
-div.instructions {
-  white-space: pre-line;
-}
-
-.newlined {
-  white-space: pre-line;
-}
-
-p.note {
+div.instructions, .newlined, p.note {
   white-space: pre-line;
 }
 
@@ -367,19 +322,19 @@ div.print a:hover {
   color: white;
 }
 
-.help-details {
+.help .details {
   padding: 4px;
 }
 
-.help-table {
+.help table {
   border: none;
 }
 
-.help-key {
+.help td.key {
   text-align: right;
 }
 
-.help-table {
+.help table {
   padding-bottom: 3px;
 }
 
@@ -393,7 +348,7 @@ div.print a:hover {
   font-style: italic;
 }
 
-.help-pre {
+.help pre {
   display: inline-block;
   background: #ddd;
   color: #000;
@@ -401,7 +356,7 @@ div.print a:hover {
   margin-left: 1em;
 }
 
-.help-title {
+.help .title {
   margin-left: 4px;
   text-transform: uppercase;
 }
@@ -410,7 +365,7 @@ div.print a:hover {
   padding: 4px;
 }
 
-.status-button {
+.status .button {
   display: inline-block;
   text-decoration: none;
   color: #000080;
