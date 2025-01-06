@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Uni-Fire S.r.l.</title>
 
-    <!-- A template for showing an quotation in a Custom Widget in Grist. -->
+    <!-- A template for showing a quotation in a Custom Widget in Grist. -->
     <!-- Uses Vue.js, moment, and the Grist Plugin API -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
@@ -101,17 +101,7 @@
         </div>
 
         <table class="items">
-          <template v-if="!Array.isArray(quotation.Items)">
-            <tr>
-              <th>Description</th>
-              <th class="money">Total</th>
-            </tr>
-            <tr>
-              <td>{{ quotation.Items }}</td>
-              <td class="money">{{ quotation.Total | currency }}</td>
-            </tr>
-          </template>
-          <template v-else>
+          <thead>
             <tr>
               <th class="code2">Codice Code</th>
               <th class="Description">Descrizione / Description</th>
@@ -120,6 +110,8 @@
               <th class="number">Q.ty</th>
               <th class="money">Totale Totale </th>
             </tr>
+          </thead>
+          <tbody>
             <tr v-for="item in quotation.Items">
               <td class="code2">{{ item.Code2 }}</td>
               <td class="Description">{{ item.Description }}</td>
@@ -128,7 +120,7 @@
               <td class="number">{{ item.Quantity }}</td>
               <td class="money">{{ item.Total | currency }}</td>
             </tr>
-          </template>
+          </tbody>
         </table>
 
         <div class="summary">
