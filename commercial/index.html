@@ -48,37 +48,6 @@
               <div class="info"><span class="meta">Job Reference</span> {{ quotation.Reference }}</div>
             </div>
 
-        <table class="c02">
-          <thead>
-            <tr>
-              <th class="Standard">Area</th>
-              <th class="Standard">Standard</th>
-              <th class="number">Lenght (m)</th>
-              <th class="number">Width (m)</th>
-              <th class="number">Height (m)</th>
-              <th class="number">Area m2</th>
-              <th class="number">VOLUME m^3 - 5%/th>
-              <th class="number">FLOODING FACTOR</th>
-              <th class="number">CO2 Design Q,TY</th>
-              <th class="number">CYLIDER Qty</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in quotation.Calcolo_volumi_CO2">
-              <td class="Standard">{{ Calcolo_volumi_CO2.Area }}</td>
-              <td class="Standard">{{ Calcolo_volumi_CO2.Standard }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.Lenght }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.Width }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.Height }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.Area }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.VOLUME5Perc }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.FLOODING_FACTOR }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.CO2_DES_qty }}</td>
-              <td class="number">{{ Calcolo_volumi_CO2.CYLIDER_Qty }}</td>
-            </tr>
-          </tbody>
-        </table>
-
           <div class="supplier">
             <div v-for="business in (quotation.Invoicer ? [quotation.Invoicer] : [])">
               <template v-if="typeof(business) === 'string'">
@@ -132,6 +101,39 @@
           </div>
         </div>
 
+        
+        <table class="c02">
+          <thead>
+            <tr>
+              <th class="Standard">Area</th>
+              <th class="Standard">Standard</th>
+              <th class="number">Lenght (m)</th>
+              <th class="number">Width (m)</th>
+              <th class="number">Height (m)</th>
+              <th class="number">Area m2</th>
+              <th class="number">VOLUME m^3 - 5%/th>
+              <th class="number">FLOODING FACTOR</th>
+              <th class="number">CO2 Design Q,TY</th>
+              <th class="number">CYLIDER Qty</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in quotation.Calcolo_volumi_CO2">
+              <td class="Standard">{{ Calcolo_volumi_CO2.Area }}</td>
+              <td class="Standard">{{ Calcolo_volumi_CO2.Standard }}</td>
+              <td class="number">{{ Calcolo_volumi_CO2.Lenght }}</td>
+              <td class="number">{{ Calcolo_volumi_CO2.Width }}</td>
+              <td class="number">{{ Calcolo_volumi_CO2.Height }}</td>
+              <td class="number">{{ Calcolo_volumi_CO2.Area }}</td>
+              <td class="number">{{ Calcolo_volumi_CO2.VOLUME5Perc }}</td>
+              <td class="number">{{ Calcolo_volumi_CO2.FLOODING_FACTOR }}</td>
+              <td class="number">{{ Calcolo_volumi_CO2.CO2_DES_qty }}</td>
+              <td class="number">{{ Calcolo_volumi_CO2.CYLIDER_Qty }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        
         <table class="items">
           <thead>
             <tr>
