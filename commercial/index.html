@@ -79,7 +79,7 @@
         </div>
         
         <div class="client" v-for="business in (quotation.Client ? [quotation.Client] : [])">
-          <div class="title">Client</div>
+          <div class="title">Cliente / Client</div>
           <div class="details">
             <template v-if="typeof(business) === 'string'">
               <div class="newlined">{{ business }}</div>
@@ -118,7 +118,7 @@
               <th class="money">Listino List Price</th>
               <th class="number">Sconto Disc.(%)</th>
               <th class="number">Q.ty</th>
-              <th class="money">Prezzo Netto Net Price </th>
+              <th class="money">Totale Totale </th>
             </tr>
             <tr v-for="item in quotation.Items">
               <td class="code2">{{ item.Code2 }}</td>
@@ -135,7 +135,7 @@
           <div class="space">
           </div>
           <div class="part">
-            <div class="title">Subtotal</div>
+            <div class="title">Subtotale Subtotal</div>
             <div class="details">{{ quotation.Subtotal | currency }}</div>
           </div>
           <div class="part">
@@ -143,7 +143,7 @@
             <div class="details">{{ quotation.Taxes | currency }}</div>
           </div>
           <div class="total">
-            <div class="title">Total</div>
+            <div class="title">Totale / Total</div>
             <div class="details">{{ quotation.Total | currency }}</div>
           </div>
         </div>
