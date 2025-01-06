@@ -3,6 +3,7 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   padding: 5px;
+  background-color: white; /* Imposta lo sfondo bianco */
 }
 
 .meta {
