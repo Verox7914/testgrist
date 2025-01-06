@@ -17,6 +17,7 @@ body {
 
 .header .meta {
   text-transform: uppercase;
+  color: black;
 }
 
 .info .meta {
