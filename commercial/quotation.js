@@ -90,6 +90,19 @@ function formatNumberAsEUR(value) {
   return result;
 }
 
+//funzione calcolare tasse
+function calculateTotalTaxes(row) {
+  if (row.Items && Array.isArray(row.Items)) {
+    try {
+      // Somma le tasse di tutti gli elementi in Items
+      row.Taxes = row.Items.reduce((sum, item) => sum + (item.Taxes || 0), 0);
+    } catch (e) {
+      console.error("Errore durante la somma delle tasse:", e);
+    }
+  }
+}
+
+
 Vue.filter('fallback', function(value, str) {
   if (!value) {
     throw new Error("Please provide column " + str);
