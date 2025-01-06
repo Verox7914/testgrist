@@ -26,6 +26,10 @@ body {
   font-weight: bold;
 }
 
+div.info span.meta {
+  color: white;
+}
+
 .info .meta::after {
   content: " :";
 }
