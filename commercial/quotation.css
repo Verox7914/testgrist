@@ -1,10 +1,10 @@
-
+/* === Base Styles === */
 body {
   font-family: Sans-Serif;
   max-width: 1100px;
   margin: 0 auto;
   padding: 5px;
-  background-color: white; /* Imposta lo sfondo bianco */
+  background-color: white;
 }
 
 .meta {
@@ -12,13 +12,18 @@ body {
 }
 
 .header .title {
-  font-size: 100%;
+  font-size: 300%;
   font-weight: bold;
 }
 
 .header .meta {
   text-transform: uppercase;
   color: black;
+}
+
+.info {
+  color: black !important;
+  font-weight: normal;
 }
 
 .info .meta {
@@ -29,9 +34,6 @@ body {
 
 .info .meta::after {
   content: " :";
-  text-transform: uppercase;
-  color: black;
-  font-weight: normal;
 }
 
 .page-break {
@@ -55,7 +57,6 @@ body {
 .supplier {
   color: #000000;
   display: block;
-  font-size: 14px;
 }
 
 .block {
@@ -64,9 +65,8 @@ body {
 }
 
 .client, .items, .summary {
-  padding: 1px;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  padding: 5px;
+  margin: 1em 0;
   background: #16a085;
   -webkit-print-color-adjust: exact !important;
   color-adjust: exact !important;
@@ -83,9 +83,10 @@ body {
 .client .details, .summary .details {
   padding: 4px;
   background-color: white;
-  color : black;
+  color: black;
 }
 
+/* === Table Styles === */
 table.items {
   width: 100%;
   border: 1px solid #16a085;
@@ -97,11 +98,9 @@ table.items {
 table.items th {
   text-align: center;
   color: white;
-  width: auto;
   text-transform: uppercase;
   font-weight: normal;
   padding: 4px;
-  font-size: 80%;
   border: 1px solid #ffffff;
 }
 
@@ -109,14 +108,15 @@ table.items td {
   background-color: white;
   padding: 4px;
   font-size: 90%;
-  color : black;
+  color: black;
 }
 
-.client .title, .summary .title, table.items th, .help .title {
-  padding-top: 10px;
-  padding-bottom: 10px;
+/* Titles and Descriptions */
+.client .title, .summary .title, table.items th {
+  padding: 10px 0;
 }
 
+/* === Utility Classes === */
 .money {
   text-align: center;
   width: 60px;
@@ -126,18 +126,6 @@ table.items td {
 .code {
   text-align: center;
   width: 55px;
-  border: 1px solid #16a085;
-}
-
-.code2 {
-  text-align: center;
-  width: 55px;
-  border: 1px solid #16a085;
-}
-
-.number {
-  text-align: center;
-  width: 40px;
   border: 1px solid #16a085;
 }
 
@@ -155,268 +143,47 @@ table.items td {
   padding-bottom: 1em;
 }
 
-div.date-tag {
-  display: inline-block;
-  min-width: 80px;
-}
-
-div.top {
-  display: flex;
-  width: 100%;
-  padding: 0px;
-  justify-content: space-between;
-}
-
+/* === Summary Section === */
 div.summary {
   display: flex;
-  width: auto;
-  padding: 0px;
   align-items: flex-end;
+  padding: 5px;
 }
 
-div.summary .part, div.summary .total  {
-  padding: 10px;
-}
-
-div.summary .part {
-  width: 20%;
-  padding-right: 20px;
+.summary .part {
   width: 120px;
+  padding-right: 20px;
 }
 
-div.summary .total {
+.summary .total {
   display: block;
   flex-grow: 1;
   background: #0b5345;
-  font-size: 100%;
-  width: 31px;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  padding: 10px;
+  text-align: right;
 }
 
-div.summary .space {
-  display: block;
+.summary .space {
   flex-grow: 1;
   width: 195px;
 }
 
-div.summary {
-  border-top-right-radius: 2em;
-  border-bottom-right-radius: 2em;
+/* === Footer Section === */
+.footer {
+  text-align: center;
+  color: black;
+  font-size: 12px;
+  line-height: 1.2;
+  padding: 5px 0;
+  border-top: 1px solid #ccc;
 }
 
-div.summary .total {
-  border-top-right-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
-}
-
-div.summary .title, div.summary .details {
-  text-align: right;
-}
-
-div.summary::after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-.phone::before {
-  content: "\260e";
-  margin-right: 0.5em;
-}
-
-.email::before {
-  content: "\2709";
-  margin-right: 0.5em;  
-}
-
-.thanks {
-  text-align: right;
+.footer .thanks {
   color: #000000;
   font-size: 100%;
-}
-
-.note {
-  text-align: Left;
-  color: #000000;
-  font-size: 75%;
-  border: 1px solid #16a085;
-  page-break-inside: avoid;
-  margin-bottom: 100px; /* Spazio extra sopra il footer */
-}
-
-.notes {
-  text-align: Left;
-  color: #000000;
-  font-size: 75%;
-  border: 1px solid #16a085;
-  page-break-inside: avoid;
-  margin-bottom: 50px;
-  padding: 2px;
-}
-
-div.instructions, .newlined, p.note {
-  white-space: pre-line;
-}
-
-.app {
-  position: relative;
-}
-
-@media print {
-  div.print {
-    display: none;
-  }
-
-  table.items {
-    page-break-inside: auto;
-  }
-  table.items thead {
-    display: table-header-group;
-  }
-  table.items tbody {
-    display: table-row-group;
-  }
-  table.items tr {
-    page-break-inside: avoid;
-    page-break-after: auto;
-  }
-   
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    color: black;
-    background-color: white; /* Personalizza il colore se necessario */
-    text-align: center;
-    padding: 10px 0;
-    border-top: 1px solid #ccc; /* Linea opzionale sopra il footer */
-  }
-
-  .header.page-2-and-beyond {
-    color: #ff5733; /* Colore specifico per le pagine successive */
-  }
-
-  body {
-    margin-bottom: 120px; /* Spazio sufficiente per il footer fisso */
-  }
-}
-
-div.print {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-}
-
-div.print a {
-  background: #C83200;
-  display: block;
-  font-size: 200%;
-  color: white;
-  text-decoration: none;
-  padding: 0.25em;
-  padding-top: 0.5em;
-  padding-right: 0.5em;
-  border-top-right-radius: 0.5em;
-  text-transform: uppercase;
-}
-
-div.print a:hover {
-  background: #4682B4;
-}
-
-.done {
-  text-decoration: line-through;
-}
-
-div.column-name {
-  display: inline-block;
-}
-
-.column-name {
-  background: blue;
-  color: white;
-  margin: 2px;
-  padding: 2px;
-  border-radius: 2px;
-  font-style: normal;
-}
-
-.column-recognized {
-  background: green;
-}
-
-.column-expected {
-  background: blue;
-}
-
-.column-ignored {
-  background: red;
-}
-
-.help {
-  padding: 1px;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  background: black;
-  color: white;
-}
-
-.help .details {
-  padding: 4px;
-}
-
-.help table {
-  border: none;
-}
-
-.help td.key {
   text-align: right;
-}
-
-.help table {
-  padding-bottom: 3px;
-}
-
-.help-close {
-  display: float;
-  float: right;
-  max-width: 150px;
-  padding: 5px;
-  border-left: 1px solid white;
-  border-bottom-left-radius: 5px;
-  font-size: 80%;
-  font-style: italic;
-}
-
-.help pre {
-  display: inline-block;
-  background: #ddd;
-  color: #000;
-  padding: 0.25em;
-  margin-left: 1em;
-}
-
-.help .title {
-  margin-left: 4px;
-  text-transform: uppercase;
-}
-
-.status {
-  padding: 4px;
-}
-
-.status .button {
-  display: inline-block;
-  text-decoration: none;
-  color: #000080;
-  background: #ddd;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  margin-top: 1px;
-  margin-bottom: 1px;
-  border-radius: 0.25em;
 }
 
 .footer .company-info {
@@ -436,4 +203,91 @@ div.column-name {
 
 .footer .company-info a:hover {
   text-decoration: underline;
+}
+
+/* === Printing Styles === */
+@media print {
+  .print {
+    display: none;
+  }
+
+  table.items {
+    page-break-inside: auto;
+  }
+
+  table.items thead {
+    display: table-header-group;
+  }
+
+  table.items tbody {
+    display: table-row-group;
+  }
+
+  table.items tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 5px;
+    border-top: 1px solid #ccc;
+  }
+
+  .header.page-2-and-beyond {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    padding: 5px 0;
+  }
+
+  body {
+    margin-bottom: 120px;
+  }
+}
+
+.print a {
+  background: #C83200;
+  font-size: 200%;
+  color: white;
+  text-decoration: none;
+  padding: 0.25em 0.5em;
+  border-top-right-radius: 0.5em;
+}
+
+.print a:hover {
+  background: #4682B4;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.column-name {
+  background: blue;
+  color: white;
+  margin: 2px;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.column-recognized {
+  background: green;
+}
+
+.column-expected {
+  background: blue;
+}
+
+.column-ignored {
+  background: red;
 }
