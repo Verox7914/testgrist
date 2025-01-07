@@ -1,429 +1,241 @@
-body {
-  font-family: Sans-Serif;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 5px;
-  background-color: white; /* Imposta lo sfondo bianco */
-}
-
-.meta {
-  color: #16a085;
-}
-
-.header .title {
-  font-size: 300%;
-  font-weight: bold;
-}
-
-.header .meta {
-  text-transform: uppercase;
-  color: black;
-}
-
-.info .meta {
-  text-transform: uppercase;
-  color: black;
-  font-weight: normal;
-}
-
-.info .meta::after {
-  content: " :";
-  text-transform: uppercase;
-  color: black;
-  font-weight: normal;
-}
-
-#app .info .meta {
-    color: black;
-}
-
-.info .meta {
-  color: black !important; /* Forza il colore nero */
-}
-
-.info .meta::after {
-  color: black !important; /* Forza il colore per il contenuto pseudo-elemento */
-}
-
-.info {
-  color: black !important; /* Colore per qualsiasi testo nella classe info */
-}
-
-.page-break {
-  page-break-before: always;
-  break-before: page;
-}
-
-.page-break-container {
-  padding: 20px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
-}
-
-.page-break-container .additional-text {
-  font-size: 14px;
-  color: black;
-  line-height: 1.5;
-}
-
-.supplier {
-  color: #000000;
-  display: block;
-}
-
-.block {
-  padding-left: 5px;
-  display: block;
-}
-
-.client, .items, .summary {
-  padding: 1px;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  background: #16a085;
-  -webkit-print-color-adjust: exact !important;
-  color-adjust: exact !important;
-  font-size: 80%;
-}
-
-.client .title, .summary .title {
-  margin-left: 4px;
-  color: white;
-  text-transform: uppercase;
-  font-size: 80%;
-}
-
-.client .details, .summary .details {
-  padding: 4px;
-  background-color: white;
-  color : black;
-}
-
-table.items {
-  width: 100%;
-  border: 1px solid #16a085;
-  border-collapse: collapse;
-  font-size: 80%;
-  text-align: left;
-}
-
-table.items th {
-  text-align: center;
-  color: white;
-  width: auto;
-  text-transform: uppercase;
-  font-weight: normal;
-  padding: 4px;
-  font-size: 80%;
-  border: 1px solid #ffffff;
-}
-
-table.items td {
-  background-color: white;
-  padding: 4px;
-  font-size: 90%;
-  color : black;
-}
-
-.client .title, .summary .title, table.items th, .help .title {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.money {
-  text-align: center;
-  width: 60px;
-  border: 1px solid #16a085;
-}
-
-.code {
-  text-align: center;
-  width: 55px;
-  border: 1px solid #16a085;
-}
-
-.code2 {
-  text-align: center;
-  width: 55px;
-  border: 1px solid #16a085;
-}
-
-.number {
-  text-align: center;
-  width: 40px;
-  border: 1px solid #16a085;
-}
-
-.Description {
-  text-align: left;
-  width: auto;
-  border: 1px solid #16a085;
-}
-
-.name {
-  color: #000080;
-}
-
-.address {
-  padding-bottom: 1em;
-}
-
-div.date-tag {
-  display: inline-block;
-  min-width: 80px;
-}
-
-div.top {
-  display: flex;
-  width: 100%;
-  padding: 0px;
-  justify-content: space-between;
-}
-
-div.summary {
-  display: flex;
-  width: auto;
-  padding: 0px;
-  align-items: flex-end;
-}
-
-div.summary .part, div.summary .total  {
-  padding: 10px;
-}
-
-div.summary .part {
-  width: 20%;
-  padding-right: 20px;
-  width: 120px;
-}
-
-div.summary .total {
-  display: block;
-  flex-grow: 1;
-  background: #0b5345;
-  font-size: 100%;
-  width: 31px;
-}
-
-div.summary .space {
-  display: block;
-  flex-grow: 1;
-  width: 195px;
-}
-
-div.summary {
-  border-top-right-radius: 2em;
-  border-bottom-right-radius: 2em;
-}
-
-div.summary .total {
-  border-top-right-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
-}
-
-div.summary .title, div.summary .details {
-  text-align: right;
-}
-
-div.summary::after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-.phone::before {
-  content: "\260e";
-  margin-right: 0.5em;
-}
-
-.email::before {
-  content: "\2709";
-  margin-right: 0.5em;  
-}
-
-.thanks {
-  text-align: right;
-  color: #000000;
-  font-size: 100%;
-}
-
-.note {
-  text-align: Left;
-  color: #000000;
-  font-size: 75%;
-  border: 1px solid #16a085;
-  page-break-inside: avoid;
-  margin-bottom: 20px;
-}
-
-.notes {
-  text-align: Left;
-  color: #000000;
-  font-size: 75%;
-  border: 1px solid #16a085;
-  page-break-inside: avoid;
-}
-
-div.instructions, .newlined, p.note {
-  white-space: pre-line;
-}
-
-.app {
-  position: relative;
-}
-
-@media print {
-  div.print {
-    display: none;
-  }
-
-  table.items {
-    page-break-inside: auto;
-  }
-  table.items thead {
-    display: table-header-group;
-  }
-  table.items tbody {
-    display: table-row-group;
-  }
-  table.items tr {
-    page-break-inside: avoid;
-    page-break-after: auto;
-  }
-   
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    color: black;
-    background-color: white; /* Personalizza il colore se necessario */
-    text-align: center;
-    padding: 10px 0;
-    border-top: 1px solid #ccc; /* Linea opzionale sopra il footer */
-    page-break-after: always;
-  }
-
-  body {
-    margin-bottom: 80px; /* Spazio sufficiente per il footer fisso */
+function ready(fn) {
+  if (document.readyState !== 'loading'){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
   }
 }
 
-div.print {
-  position: fixed;
-  left: 0;
-  bottom: 0;
+function addDemo(row) {
+  if (!row.Issued && !row.Due) {
+    for (const key of ['Number', 'Issued', 'Due', 'Reference']) {
+      if (!row[key]) { row[key] = key; }
+    }
+    for (const key of ['Subtotal', 'Deduction', 'Taxes', 'Total']) {
+      if (!(key in row)) { row[key] = key; }
+    }
+    if (!('Note' in row)) { row.Note = '(Anything in a Note column goes here)'; }
+  }
+  if (!row.Invoicer) {
+    row.Invoicer = {
+      Name: 'Invoicer.Name',
+      Street1: 'Invoicer.Street1',
+      Street2: 'Invoicer.Street2',
+      City: 'Invoicer.City',
+      State: '.State',
+      Zip: '.Zip',
+      Email: 'Invoicer.Email',
+      Phone: 'Invoicer.Phone',
+      Website: 'Invoicer.Website'
+    };
+  }
+  if (!row.Client) {
+    row.Client = {
+      Name: 'Anagrafica.Nome_Cliente',
+      Street1: 'Anagrafica.indirizzo',
+      City: 'Client.City',
+      State: '.State',
+      Zip: '.Zip'
+    };
+  }
+  return row;
 }
 
-div.print a {
-  background: #C83200;
-  display: block;
-  font-size: 200%;
-  color: white;
-  text-decoration: none;
-  padding: 0.25em;
-  padding-top: 0.5em;
-  padding-right: 0.5em;
-  border-top-right-radius: 0.5em;
-  text-transform: uppercase;
+const data = {
+  count: 0,
+  quotation: '',
+  status: 'waiting',
+  tableConnected: false,
+  rowConnected: false,
+  haveRows: false,
+};
+let app = undefined;
+
+Vue.filter('currency', formatNumberAsEUR);
+function formatNumberAsEUR(value) {
+  if (typeof value !== "number") {
+    return value || '—';      // falsy value would be shown as a dash.
+  }
+  value = Math.round(value * 100) / 100;    // Round to nearest cent.
+  value = (value === -0 ? 0 : value);       // Avoid negative zero.
+
+  const result = value.toLocaleString('en', {
+    style: 'currency', currency: 'EUR'
+  });
+  if (result.includes('NaN')) {
+    return value;
+  }
+  return result;
 }
 
-div.print a:hover {
-  background: #4682B4;
+// Funzione per calcolare le tasse
+function calculateTotalTaxes(row) {
+  if (row.Items && Array.isArray(row.Items)) {
+    try {
+      // Somma le tasse di tutti gli elementi in Items
+      row.Taxes = row.Items.reduce((sum, item) => sum + (item.Taxes || 0), 0);
+    } catch (e) {
+      console.error("Errore durante la somma delle tasse:", e);
+    }
+  }
 }
 
-.done {
-  text-decoration: line-through;
+Vue.filter('fallback', function(value, str) {
+  if (!value) {
+    throw new Error("Please provide column " + str);
+  }
+  return value;
+});
+
+Vue.filter('asDate', function(value) {
+  if (typeof(value) === 'number') {
+    value = new Date(value * 1000);
+  }
+  const date = moment.utc(value);
+  return date.isValid() ? date.format('MMMM DD, YYYY') : value;
+});
+
+function tweakUrl(url) {
+  if (!url) { return url; }
+  if (url.toLowerCase().startsWith('http')) {
+    return url;
+  }
+  return 'https://' + url;
+};
+
+function handleError(err) {
+  console.error(err);
+  const target = app || data;
+  target.quotation = '';
+  target.status = String(err).replace(/^Error: /, '');
+  console.log(data);
 }
 
-div.column-name {
-  display: inline-block;
+function prepareList(lst, order) {
+  if (order) {
+    let orderedLst = [];
+    const remaining = new Set(lst);
+    for (const key of order) {
+      if (remaining.has(key)) {
+        remaining.delete(key);
+        orderedLst.push(key);
+      }
+    }
+    lst = [...orderedLst].concat([...remaining].sort());
+  } else {
+    lst = [...lst].sort();
+  }
+  return lst;
 }
 
-.column-name {
-  background: blue;
-  color: white;
-  margin: 2px;
-  padding: 2px;
-  border-radius: 2px;
-  font-style: normal;
+function roundToTwoDecimals(value) {
+  return Math.round(value * 100) / 100;
 }
 
-.column-recognized {
-  background: green;
+function updatequotation(row) {
+  try {
+    data.status = '';
+    if (row === null) {
+      throw new Error("(No data - not on row - please add or select a row)");
+    }
+
+    console.log("GOT row before processing:", JSON.stringify(row));
+
+    if (row.References) {
+      try {
+        Object.assign(row, row.References);
+      } catch (err) {
+        throw new Error('Could not understand References column. ' + err);
+      }
+    }
+
+    // Calcola Subtotal come somma dei valori definitivi di Total negli Items
+    if (row.Items && Array.isArray(row.Items)) {
+      row.Subtotal = row.Items.reduce((sum, item) => sum + (item.Total || 0), 0);
+
+      // Calcola Taxes come somma dei valori definitivi di Taxes negli Items
+      calculateTotalTaxes(row);
+
+      // Calcola il valore globale Total come somma di Subtotal e Taxes
+      row.Total = (row.Subtotal || 0) + (row.Taxes || 0) - (row.Deduction || 0);
+    }
+
+    // Gestisci dati Co2
+    if (row.Co2 && Array.isArray(row.Co2)) {
+      console.log("Processing Co2 data before rounding:", row.Co2);
+
+      // Applica l'arrotondamento a ogni elemento di Co2
+      row.Co2 = row.Co2.map(item => {
+        return {
+          ...item,
+          Lenght: roundToTwoDecimals(item.Lenght),
+          Width: roundToTwoDecimals(item.Width),
+          Height: roundToTwoDecimals(item.Height),
+          Area2: roundToTwoDecimals(item.Area2),
+          VOLUME5Perc: roundToTwoDecimals(item.VOLUME5Perc),
+          FLOODING_FACTOR: roundToTwoDecimals(item.FLOODING_FACTOR),
+          CO2_DES_qty: roundToTwoDecimals(item.CO2_DES_qty)
+        };
+      });
+
+      data.quotation.Co2 = row.Co2;
+
+      console.log("Processed Co2 data after rounding:", data.quotation.Co2);
+
+      // Calcola aggregati
+      row.TotalVolumeCo2 = row.Co2.reduce((sum, item) => sum + (item.VOLUME5Perc || 0), 0);
+      row.TotalCO2Qty = row.Co2.reduce((sum, item) => sum + (item.CO2_DES_qty || 0), 0);
+      row.TotalCylinders = row.Co2.reduce((sum, item) => sum + (item.CYLIDER_Qty || 0), 0);
+    } else {
+      console.warn("Co2 data is missing or invalid:", row.Co2);
+      data.quotation.Co2 = [];
+    }
+
+    if (row.Invoicer && row.Invoicer.Website && !row.Invoicer.Url) {
+      row.Invoicer.Url = tweakUrl(row.Invoicer.Website);
+    }
+
+    // Aggiunge informazioni aggiuntive e suggerimenti sulle colonne
+    const want = new Set(Object.keys(addDemo({})));
+    for (const key of want) {
+      Vue.delete(data.quotation, key);
+    }
+    data.quotation = Object.assign({}, data.quotation, row);
+
+    console.log("Final quotation data:", data.quotation);
+
+  } catch (err) {
+    handleError(err);
+  }
 }
 
-.column-expected {
-  background: blue;
-}
+ready(function() {
+  // Update the quotation anytime the document data changes.
+  grist.ready();
+  grist.onRecord(updatequotation);
 
-.column-ignored {
-  background: red;
-}
+  // Monitor status so we can give user advice.
+  grist.on('message', msg => {
+    // If we are told about a table but not which row to access, check the
+    // number of rows.  Currently if the table is empty, and "select by" is
+    // not set, onRecord() will never be called.
+    if (msg.tableId && !app.rowConnected) {
+      grist.docApi.fetchSelectedTable().then(table => {
+        if (table.id && table.id.length >= 1) {
+          app.haveRows = true;
+        }
+      }).catch(e => console.log(e));
+    }
+    if (msg.tableId) { app.tableConnected = true; }
+    if (msg.tableId && !msg.dataChange) { app.RowConnected = true; }
+  });
 
-.help {
-  padding: 1px;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  background: black;
-  color: white;
-}
+  Vue.config.errorHandler = function (err, vm, info)  {
+    handleError(err);
+  };
 
-.help .details {
-  padding: 4px;
-}
-
-.help table {
-  border: none;
-}
-
-.help td.key {
-  text-align: right;
-}
-
-.help table {
-  padding-bottom: 3px;
-}
-
-.help-close {
-  display: float;
-  float: right;
-  max-width: 150px;
-  padding: 5px;
-  border-left: 1px solid white;
-  border-bottom-left-radius: 5px;
-  font-size: 80%;
-  font-style: italic;
-}
-
-.help pre {
-  display: inline-block;
-  background: #ddd;
-  color: #000;
-  padding: 0.25em;
-  margin-left: 1em;
-}
-
-.help .title {
-  margin-left: 4px;
-  text-transform: uppercase;
-}
-
-.status {
-  padding: 4px;
-}
-
-.status .button {
-  display: inline-block;
-  text-decoration: none;
-  color: #000080;
-  background: #ddd;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  margin-top: 1px;
-  margin-bottom: 1px;
-  border-radius: 0.25em;
-}
+  app = new Vue({
+    el: '#app',
+    data: data
+  });
+});
