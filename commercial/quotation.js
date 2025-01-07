@@ -291,11 +291,7 @@ div.instructions, .newlined, p.note {
     page-break-inside: avoid;
     page-break-after: auto;
   }
-  
-  .header {
-        color: black; /* Cambia il colore del testo dell'header */
-    }
-  
+   
   .footer {
     position: fixed;
     bottom: 0;
