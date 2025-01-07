@@ -39,7 +39,6 @@
         <div class="top first-page">
           <div class="block">
             <div class="header">
-              <!--  <div class="meta title">quotation</div> -->
               <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
             </div>
               <div class="info" style="color: black; font-weight: normal;">
@@ -116,13 +115,13 @@
         <div class="page-break-container">
           <p class="additional-text">Your additional text here.</p>
         </div>
-      
-        <div class="page-break"></div>
 
         <div class="header">
           <p>Header for all pages except the first</p>
         </div>
         
+        <div class="page-break"></div>
+
         <table class="items" v-if="quotation.Co2 && quotation.Co2.length > 0">
           <thead>
             <tr>
@@ -193,53 +192,16 @@
             <div class="details">{{ quotation.Total | currency }}</div>
           </div>
         </div>
-          
-        <template v-if="quotation.Note">
-          <p class="note">{{ quotation.Note }}</p>
-        </template>
 
-        <template v-for="help in (quotation.Help ? [quotation.Help] : [])">
-          <div class="help">
-            <div class="help-close">
-              Add <span class="column-name">Due</span> or <span class="column-name">Issued</span> date to hide this help.
-            </div>
-            <div class="title">Column information</div>
-            <div class="details">
-              <table>
-                <tr v-for="group in ['recognized', 'expected', 'ignored']">
-                  <td class="key">{{ group }}</td>
-                  <td>
-                    <template v-if="group in help">
-                      <div v-bind:class="['column-name', 'column-' + group]" v-for="col in help[group]">{{col}}</div>
-                    </template>
-                    <template v-else>
-                      &mdash;
-                    </template>
-                  </td>
-                </tr>
-              </table>
-              <template v-if="quotation.SuggestReferencesColumn">
-                <div>For structured address and item information, add a <span class="column-name">References</span> column with this formula:</div>
-                <div>
-                  <pre>RECORD(rec, expand_refs=1)</pre>
-                </div>
-              </template>
-            </div>
-          </div>
-        </template>
+        <div class="notes">
+          <p>Note:</p>
+          <ul>
+            <li>- Due to the unstable situation we inform that the offer may be changed at any time both in price and delivery time. We are not able to predict the further development of the market and its impact on the cost of raw materials and other factors affecting the execution of contracts. Thank you for your understanding.</li>
+            <li>- A causa della situazione instabile, informiamo che l'offerta può essere modificata in qualsiasi momento sia nel prezzo che nei tempi di consegna. Non siamo in grado di prevedere l'ulteriore sviluppo del mercato e il suo impatto sul costo delle materie prime e su altri fattori che ne influenzano l'esecuzione dei contratti. Vi ringraziamo per la vostra comprensione.</li>
+          </ul>
+        </div>
 
         <div class="footer">
-          <div class="note">
-            Note:
-          </div>
-          <div class="notes">
-            - Due to the unstable situation we inform that the offer may be changed at any time both in price and delivery time. We are not able to predict the further development of the market and its impact on the cost of raw materials and other factors affecting the execution of contracts. Thank you for your understanding.
-          </div>
-          <div class="notes">
-            - A causa della situazione instabile, informiamo che l'offerta può essere modificata in qualsiasi momento sia nel prezzo che nei tempi di consegna. Non siamo in grado di prevedere l'ulteriore sviluppo del mercato e il suo impatto sul costo delle materie prime e su altri fattori che ne influenzano l'esecuzione dei contratti. Vi ringraziamo per la vostra comprensione.
-          </div>
-        </div>
-         <div class="footer">
           <div class="thanks">
             Grazie - Thank you!
           </div>
