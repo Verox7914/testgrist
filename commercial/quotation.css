@@ -239,13 +239,13 @@ div.summary {
 
   .header.page-2-and-beyond {
     display: block !important;
-    position: relative;
+    position: static;
     top: auto;
     left: auto;
-    width: auto;
+    width: 100%;
     background-color: white;
     border-bottom: none;
-    text-align: right;
+    text-align: left;
     padding: 0;
   }
 
