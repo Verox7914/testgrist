@@ -189,11 +189,10 @@ div.summary {
 .footer .company-info {
   text-align: center;
   font-size: 10px;
-  line-height: 0.5;
+  line-height: 1.2;
   color: black;
   padding: 5px 0; /* Spazio verticale ridotto */
-  border-top: 1px solid #ccc; /* Linea opzionale sopra il footer */
-  margin-top: 0; /* Rimuove il margine sopra */
+  border-top: none; /* Evita duplicazioni */
 }
 
 .footer .company-info a {
@@ -235,7 +234,7 @@ div.summary {
     width: 100%;
     background-color: white;
     padding: 5px;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #ccc; /* Unica linea di separazione */
   }
 
   .header.page-2-and-beyond {
