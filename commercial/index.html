@@ -42,20 +42,20 @@
               <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
             </div>
               <div class="info" style="color: black; font-weight: normal;">
-                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal;">quotation Number</span> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold;">#{{ quotation.Number }}</span>
+                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 100%;">quotation Number</span> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 100%;">#{{ quotation.Number }}</span>
               </div>
               <div class="info" v-if="quotation.Issued" style="color: black;">
-                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal;">Emission Date</div> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold;">{{ quotation.Issued | asDate }}</span>
+                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 100%;">Emission Date</div> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 100%;">{{ quotation.Issued | asDate }}</span>
               </div>
               <div class="info" v-if="quotation.Due" style="color: black;">
-                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal;">Valid Since</div> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold;">{{ quotation.Due | asDate }}</span>
+                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 100%;">Valid Since</div> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 100%;">{{ quotation.Due | asDate }}</span>
               </div>
               <div class="info" style="color: black;">
-                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal;">Job Reference</span> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold;">{{ quotation.Reference }}</span>
+                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 100%;">Job Reference</span> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 100%;">{{ quotation.Reference }}</span>
               </div>
             </div>
 
