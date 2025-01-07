@@ -17,9 +17,6 @@
   </head>
   <body>
     <div id="app">
-      <div class="header">
-        <p>Header for all pages except the first</p>
-      </div>
       <div class="status" v-if="status">
         <template v-if="status === 'waiting'">
           <p>Waiting for data...</p>
@@ -119,9 +116,13 @@
         <div class="page-break-container">
           <p class="additional-text">Your additional text here.</p>
         </div>
-        
+      
         <div class="page-break"></div>
 
+        <div class="header">
+          <p>Header for all pages except the first</p>
+        </div>
+        
         <table class="items" v-if="quotation.Co2 && quotation.Co2.length > 0">
           <thead>
             <tr>
