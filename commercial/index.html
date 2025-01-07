@@ -113,39 +113,43 @@
           </div>
         </div>
 
+        <div class="page-break-container">
+          <p class="additional-text">Your additional text here.</p>
+        </div>
         
-            <table class="items" v-if="quotation.Co2 && quotation.Co2.length > 0">
-              <thead>
-                <tr>
-                  <th class="number">Area</th>
-                  <th class="number">Standard</th>
-                  <th class="number">Length (m)</th>
-                  <th class="number">Width (m)</th>
-                  <th class="number">Height (m)</th>
-                  <th class="number">Area m²</th>
-                  <th class="number">VOLUME m³ - 5%</th>
-                  <th class="number">FLOODING FACTOR</th>
-                  <th class="number">CO2 Design Qty</th>
-                  <th class="number">CYLINDER Qty</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="item in quotation.Co2" :key="item.id">
-                  <td class="number">{{ item.Area }}</td>
-                  <td class="number">{{ item.Standard }}</td>
-                  <td class="number">{{ item.Lenght }}</td>
-                  <td class="number">{{ item.Width }}</td>
-                  <td class="number">{{ item.Height }}</td>
-                  <td class="number">{{ item.Area2 }}</td>
-                  <td class="number">{{ item.VOLUME5Perc }}</td>
-                  <td class="number">{{ item.FLOODING_FACTOR }}</td>
-                  <td class="number">{{ item.CO2_DES_qty }}</td>
-                  <td class="number">{{ item.CYLIDER_Qty }}</td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="page-break"></div>
 
-        
+        <table class="items" v-if="quotation.Co2 && quotation.Co2.length > 0">
+          <thead>
+            <tr>
+              <th class="number">Area</th>
+              <th class="number">Standard</th>
+              <th class="number">Length (m)</th>
+              <th class="number">Width (m)</th>
+              <th class="number">Height (m)</th>
+              <th class="number">Area m²</th>
+              <th class="number">VOLUME m³ - 5%</th>
+              <th class="number">FLOODING FACTOR</th>
+              <th class="number">CO2 Design Qty</th>
+              <th class="number">CYLINDER Qty</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in quotation.Co2" :key="item.id">
+              <td class="number">{{ item.Area }}</td>
+              <td class="number">{{ item.Standard }}</td>
+              <td class="number">{{ item.Lenght }}</td>
+              <td class="number">{{ item.Width }}</td>
+              <td class="number">{{ item.Height }}</td>
+              <td class="number">{{ item.Area2 }}</td>
+              <td class="number">{{ item.VOLUME5Perc }}</td>
+              <td class="number">{{ item.FLOODING_FACTOR }}</td>
+              <td class="number">{{ item.CO2_DES_qty }}</td>
+              <td class="number">{{ item.CYLIDER_Qty }}</td>
+            </tr>
+          </tbody>
+        </table>
+
         <table class="items">
           <thead>
             <tr>
