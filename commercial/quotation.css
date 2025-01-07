@@ -432,3 +432,19 @@ div.column-name {
   margin-bottom: 1px;
   border-radius: 0.25em;
 }
+
+.footer .company-info {
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.6;
+  color: black;
+}
+
+.footer .company-info a {
+  color: #0000FF; /* Colore per i link */
+  text-decoration: none;
+}
+
+.footer .company-info a:hover {
+  text-decoration: underline;
+}
