@@ -49,6 +49,22 @@ body {
   color: black !important; /* Colore per qualsiasi testo nella classe info */
 }
 
+.page-break {
+  page-break-before: always;
+}
+
+.page-break-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.page-break-container .additional-text {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
 
 .supplier {
   color: #000000;
