@@ -255,7 +255,7 @@ div.summary::after {
   font-size: 75%;
   border: 1px solid #16a085;
   page-break-inside: avoid;
-  margin-bottom: 20px;
+  margin-bottom: 100px; /* Spazio extra sopra il footer */
 }
 
 .notes {
@@ -264,6 +264,7 @@ div.summary::after {
   font-size: 75%;
   border: 1px solid #16a085;
   page-break-inside: avoid;
+  margin-bottom: 100px; /* Spazio extra sopra il footer */
 }
 
 div.instructions, .newlined, p.note {
@@ -303,7 +304,6 @@ div.instructions, .newlined, p.note {
     text-align: center;
     padding: 10px 0;
     border-top: 1px solid #ccc; /* Linea opzionale sopra il footer */
-    page-break-after: always;
   }
 
   .header.page-2-and-beyond {
@@ -311,7 +311,7 @@ div.instructions, .newlined, p.note {
   }
 
   body {
-    margin-bottom: 80px; /* Spazio sufficiente per il footer fisso */
+    margin-bottom: 120px; /* Spazio sufficiente per il footer fisso */
   }
 }
 
