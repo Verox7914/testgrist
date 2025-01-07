@@ -41,19 +41,19 @@
             <div class="header">
               <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
             </div>
-              <div class="info" style="color: black; font-weight: normal;">
+              <div class="info" style="color: black; font-weight: normal; font-size: 100%">
                 <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 100%;">quotation Number</span> 
                 <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 100%;">#{{ quotation.Number }}</span>
               </div>
-              <div class="info" v-if="quotation.Issued" style="color: black;">
+              <div class="info" v-if="quotation.Issued" style="color: black; font-size: 100%">
                 <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 100%;">Emission Date</div> 
                 <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 100%;">{{ quotation.Issued | asDate }}</span>
               </div>
-              <div class="info" v-if="quotation.Due" style="color: black;">
+              <div class="info" v-if="quotation.Due" style="color: black; font-size: 100%">
                 <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 100%;">Valid Since</div> 
                 <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 100%;">{{ quotation.Due | asDate }}</span>
               </div>
-              <div class="info" style="color: black;">
+              <div class="info" style="color: black; font-size: 100%">
                 <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 100%;">Job Reference</span> 
                 <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 100%;">{{ quotation.Reference }}</span>
               </div>
