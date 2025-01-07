@@ -113,7 +113,7 @@ table.items td {
 }
 
 .client .title, .summary .title, table.items th, .help .title {
-  padding-top: 2px;
+  padding-top: 10px;
   padding-bottom: 10px;
 }
 
