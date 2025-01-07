@@ -288,6 +288,17 @@ div.instructions, .newlined, p.note {
     page-break-inside: avoid;
     page-break-after: auto;
   }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white; /* Personalizza il colore se necessario */
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #ccc; /* Linea opzionale sopra il footer */
+  }
 }
 
 div.print {
