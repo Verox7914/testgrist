@@ -249,7 +249,8 @@ div.summary::after {
   font-size: 75%;
   border: 1px solid #16a085;
   page-break-inside: avoid;
-  margin-bottom: 100px; /* Spazio extra sopra il footer */
+  margin-bottom: 50px;
+  padding: 2px;
 }
 
 div.instructions, .newlined, p.note {
