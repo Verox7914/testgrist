@@ -51,18 +51,19 @@ body {
 
 .page-break {
   page-break-before: always;
+  break-before: page;
 }
 
 .page-break-container {
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border: 1px solid #ddd;
   margin-bottom: 20px;
 }
 
 .page-break-container .additional-text {
   font-size: 14px;
-  color: #333;
+  color: black;
   line-height: 1.5;
 }
 
