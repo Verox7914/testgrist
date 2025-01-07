@@ -423,6 +423,9 @@ div.column-name {
   font-size: 10px;
   line-height: 0.5;
   color: black;
+  padding: 5px 0; /* Spazio verticale ridotto */
+  border-top: 1px solid #ccc; /* Linea opzionale sopra il footer */
+  margin-top: 0; /* Rimuove il margine sopra */
 }
 
 .footer .company-info a {
