@@ -43,20 +43,20 @@
               <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
             </div>
               <div class="info" style="color: black; font-weight: normal;">
-                <span class="meta" style="text-transform: uppercase; color: black; font-weight: bold;">quotation Number</span> 
-                <span style="color: black;">#{{ quotation.Number }}</span>
+                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal;">quotation Number</span> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold;">#{{ quotation.Number }}</span>
               </div>
               <div class="info" v-if="quotation.Issued" style="color: black;">
-                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: bold;">Emission Date</div> 
-                <span style="color: black;">{{ quotation.Issued | asDate }}</span>
+                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal;">Emission Date</div> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold;">{{ quotation.Issued | asDate }}</span>
               </div>
               <div class="info" v-if="quotation.Due" style="color: black;">
-                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: bold;">Valid Since</div> 
-                <span style="color: black;">{{ quotation.Due | asDate }}</span>
+                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal;">Valid Since</div> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold;">{{ quotation.Due | asDate }}</span>
               </div>
               <div class="info" style="color: black;">
-                <span class="meta" style="text-transform: uppercase; color: black; font-weight: bold;">Job Reference</span> 
-                <span style="color: black;">{{ quotation.Reference }}</span>
+                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal;">Job Reference</span> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold;">{{ quotation.Reference }}</span>
               </div>
             </div>
 
