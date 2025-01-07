@@ -253,6 +253,8 @@ div.summary::after {
   color: #000000;
   font-size: 75%;
   border: 1px solid #16a085;
+  page-break-inside: avoid;
+  margin-bottom: 20px;
 }
 
 .notes {
@@ -260,6 +262,7 @@ div.summary::after {
   color: #000000;
   font-size: 75%;
   border: 1px solid #16a085;
+  page-break-inside: avoid;
 }
 
 div.instructions, .newlined, p.note {
@@ -288,16 +291,22 @@ div.instructions, .newlined, p.note {
     page-break-inside: avoid;
     page-break-after: auto;
   }
-
+   
   .footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
+    color: black;
     background-color: white; /* Personalizza il colore se necessario */
     text-align: center;
     padding: 10px 0;
     border-top: 1px solid #ccc; /* Linea opzionale sopra il footer */
+    page-break-after: always;
+  }
+
+  body {
+    margin-bottom: 80px; /* Spazio sufficiente per il footer fisso */
   }
 }
 
