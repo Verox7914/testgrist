@@ -1,3 +1,4 @@
+
 body {
   font-family: Sans-Serif;
   max-width: 1100px;
@@ -303,6 +304,10 @@ div.instructions, .newlined, p.note {
     padding: 10px 0;
     border-top: 1px solid #ccc; /* Linea opzionale sopra il footer */
     page-break-after: always;
+  }
+
+  .header.page-2-and-beyond {
+    color: #ff5733; /* Colore specifico per le pagine successive */
   }
 
   body {
