@@ -51,6 +51,53 @@ body {
   color: black;
   line-height: 1.5;
 }
+.top.first-page {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.block {
+    margin: 10px 0;
+}
+
+.header img {
+    max-width: 100%;
+    height: auto;
+}
+
+.offdata {
+    margin: 10px 0;
+    color: black;
+    font-size: 10px;
+}
+
+.matatata {
+    display: block;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: black;
+    font-size: 10px;
+}
+
+.dataquote {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: black;
+    font-size: 10px;
+}
+
+.datequote {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: black;
+    font-size: 10px;
+}
+
+.date-tag {
+    margin-bottom: 5px;
+}
 
 .supplier {
   color: #000000;
