@@ -198,13 +198,13 @@ div.summary .space {
 }
 
 div.summary {
-  border-top-right-radius: 2em;
-  border-bottom-right-radius: 2em;
+  /*border-top-right-radius: 2em; */
+  /*border-bottom-right-radius: 2em; */
 }
 
 div.summary .total {
-  border-top-right-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
+  /*border-top-right-radius: 0.5em;*/
+  /*border-bottom-right-radius: 0.5em;*/
 }
 
 div.summary .title, div.summary .details {
