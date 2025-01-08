@@ -186,7 +186,7 @@ div.summary .part {
 div.summary .total {
   display: block;
   flex-grow: 1;
-  background: #0b5345;
+  background: #000000;
   font-size: 100%;
   width: 31px;
 }
