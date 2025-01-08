@@ -41,14 +41,14 @@ body {
 
 .page-break-container {
   padding: 5px;
-  background-color: #ffffff;
+  background-color: #16a085;
   margin-bottom: 20px;
 }
 
 .page-break-container .additional-text {
   font-size: 14px;
   color: black;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 .supplier {
