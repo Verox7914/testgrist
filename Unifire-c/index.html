@@ -35,29 +35,29 @@
           {{ status }}
         </template>
       </div>
+      
       <template v-if="quotation">
-        <div class="top first-page">
-          <div class="block">
-            <div class="header">
-              <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
-            </div>
-              <div class="info" style="color: black; font-weight: normal; font-size: 10px">
-                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">quotation Number</span> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">#{{ quotation.Number }}</span>
+          <div class="contenitore-1">
+              <div class="header-data">
+                  <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
               </div>
-              <div class="info" v-if="quotation.Issued" style="color: black; font-size: 100%">
-                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Emission Date</div> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Issued | asDate }}</span>
+              <div class="info-data">
+                  <span class="meta-data">Quotation Number</span>
+                  <span>#{{ quotation.Number }}</span>
               </div>
-              <div class="info" v-if="quotation.Due" style="color: black; font-size: 100%">
-                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Valid Since</div> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Due | asDate }}</span>
+              <div class="info-data" v-if="quotation.Issued">
+                  <div class="meta-data">Emission Date</div>
+                  <span>{{ quotation.Issued | asDate }}</span>
               </div>
-              <div class="info" style="color: black; font-size: 100%">
-                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Job Reference</span> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Reference }}</span>
+              <div class="info-data" v-if="quotation.Due">
+                  <div class="meta-data">Valid Since</div>
+                  <span>{{ quotation.Due | asDate }}</span>
               </div>
-            </div>
+              <div class="info-data">
+                  <span class="meta-data">Job Reference</span>
+                  <span>{{ quotation.Reference }}</span>
+              </div>
+          </div>
 
           <div class="supplier">
             <div v-for="business in (quotation.Invoicer ? [quotation.Invoicer] : [])">
@@ -138,26 +138,26 @@
         <div class="header">
                   <div class="top first-page">
           <div class="block">
-            <div class="header">
-              <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
-            </div>
-              <div class="info" style="color: black; font-weight: normal; font-size: 10px">
-                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">quotation Number</span> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">#{{ quotation.Number }}</span>
+              <div class="header-data">
+                  <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
               </div>
-              <div class="info" v-if="quotation.Issued" style="color: black; font-size: 100%">
-                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Emission Date</div> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Issued | asDate }}</span>
+              <div class="info-data">
+                  <span class="meta-data">Quotation Number</span>
+                  <span>#{{ quotation.Number }}</span>
               </div>
-              <div class="info" v-if="quotation.Due" style="color: black; font-size: 100%">
-                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Valid Since</div> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Due | asDate }}</span>
+              <div class="info-data" v-if="quotation.Issued">
+                  <div class="meta-data">Emission Date</div>
+                  <span>{{ quotation.Issued | asDate }}</span>
               </div>
-              <div class="info" style="color: black; font-size: 100%">
-                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Job Reference</span> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Reference }}</span>
+              <div class="info-data" v-if="quotation.Due">
+                  <div class="meta-data">Valid Since</div>
+                  <span>{{ quotation.Due | asDate }}</span>
               </div>
-            </div>
+              <div class="info-data">
+                  <span class="meta-data">Job Reference</span>
+                  <span>{{ quotation.Reference }}</span>
+              </div>
+          </div>
 
           <div class="supplier">
             <div v-for="business in (quotation.Invoicer ? [quotation.Invoicer] : [])">
