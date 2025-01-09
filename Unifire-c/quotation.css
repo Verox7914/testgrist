@@ -151,6 +151,14 @@ table.items td {
   text-align: right;
 }
 
+.email {
+  text-align: right;
+}
+
+.website {
+  text-align: right;
+}
+
 .address {
   padding-bottom: 1em;
   text-align: right;
