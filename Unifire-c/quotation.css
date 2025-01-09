@@ -230,13 +230,11 @@ div.summary::after {
 .phone::before {
   content: "\260e";
   margin-right: 0.5em;
-  text-align: right;
 }
 
 .email::before {
   content: "\2709";
   margin-right: 0.5em;
-  text-align: right;
 }
 
 .thanks {
