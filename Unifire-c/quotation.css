@@ -148,10 +148,12 @@ table.items td {
 
 .name {
   color: #000080;
+  text-align: right;
 }
 
 .address {
   padding-bottom: 1em;
+  text-align: right;
 }
 
 div.date-tag {
@@ -220,11 +222,13 @@ div.summary::after {
 .phone::before {
   content: "\260e";
   margin-right: 0.5em;
+  text-align: right;
 }
 
 .email::before {
   content: "\2709";
-  margin-right: 0.5em;  
+  margin-right: 0.5em;
+  text-align: right;
 }
 
 .thanks {
