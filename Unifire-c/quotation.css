@@ -53,7 +53,7 @@ body {
 
 .supplier {
   color: #000000;
-   display: flex; /*block*/
+  display: block;
   font-size: 14px;
 }
 
@@ -146,34 +146,8 @@ table.items td {
   border: 1px solid #16a085;
 }
 
-.contenitore-1 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 400px;
-}
-
-.header img {
-    max-width: 100%;
-}
-
-.info-data {
-    color: black;
-    font-size: 10px;
-    margin-bottom: 10px;
-}
-
 .name {
   color: #000080;
-  text-align: right;
-}
-
-.email {
-  text-align: right;
-}
-
-.website {
-  text-align: right;
 }
 
 .address {
@@ -250,7 +224,7 @@ div.summary::after {
 
 .email::before {
   content: "\2709";
-  margin-right: 0.5em;
+  margin-right: 0.5em;  
 }
 
 .thanks {
