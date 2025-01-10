@@ -41,10 +41,22 @@
             <div class="header">
               <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
             </div>
-            <div class="info"><span class="meta">quotation Number</span> #{{ quotation.Number }}</div>
-            <div class="info" v-if="quotation.Issued"><span class="meta date-tag">Emission Date</span> {{ quotation.Issued | asDate }}</div>
-            <div class="info" v-if="quotation.Due"><span class="meta date-tag">Valid Since</span> {{ quotation.Due | asDate }}</div>
-            <div class="info"><span class="meta">Job Reference</span> #{{ quotation.Reference }}</div>
+            <div class="info">
+              <span class="meta">quotation Number</span>
+               <span class="datas">#{{ quotation.Number }}
+               </div>
+            <div class="info" v-if="quotation.Issued">
+              <span class="meta date-tag">Emission Date</span>
+              <span class="datas"> {{ quotation.Issued | asDate }}
+            </div>
+            <div class="info" v-if="quotation.Due">
+              <span class="meta date-tag">Valid Since</span>
+              <span class="datas"> {{ quotation.Due | asDate }}
+            </div>
+            <div class="info">
+              <span class="meta">Job Reference</span>
+              <span class="datas"> #{{ quotation.Reference }}
+            </div>
           </div>
 
           <div class="supplier">
