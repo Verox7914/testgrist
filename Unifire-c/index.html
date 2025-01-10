@@ -41,25 +41,16 @@
               <div class="header-data">
                   <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
               </div>
-              <div class="info-data">
-                  <span class="meta-data">Quotation Number</span>
-                  <span>#{{ quotation.Number }}</span>
-              </div>
-              <div class="info-data" v-if="quotation.Issued">
-                  <div class="meta-data">Emission Date</div>
-                  <span>{{ quotation.Issued | asDate }}</span>
-              </div>
-              <div class="info-data" v-if="quotation.Due">
-                  <div class="meta-data">Valid Since</div>
-                  <span>{{ quotation.Due | asDate }}</span>
-              </div>
-              <div class="info-data">
-                  <span class="meta-data">Job Reference</span>
-                  <span>{{ quotation.Reference }}</span>
-              </div>
+
+              <div class="meta title">Invoice</div>
+                </div>
+                <div class="info"><span class="meta">Quotation Number</span> #{{ quotation.Number }}</div>
+                <div class="info" v-if="invoice.Issued"><div class="meta date-tag">Issued</div> {{ quotation.Issued | asDate }}</div>
+                <div class="info" v-if="invoice.Due"><div class="meta date-tag">Valid Since</div> {{ quotation.Due | asDate }}</div>
+                <div class="info"><span class="meta">Job Number</span> {{ quotation.Reference }}</div>
           </div>
 
-          <div class="supplier">
+            <div class="supplier">
             <div v-for="business in (quotation.Invoicer ? [quotation.Invoicer] : [])">
               <template v-if="typeof(business) === 'string'">
                 <div class="address newlined">{{ business }}</div>
