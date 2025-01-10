@@ -277,12 +277,20 @@
           </ul>
         </div>
 
-        <div class="total">
-        <div class="title">Delivery Terms</div>
-        <div class="details">{{ quotation.delivery_terms }}</div>
-        <div class="title">Payment terms</div>
-        <div class="details">{{ quotation.Pay_terms }} - Invoice issued upon delivery of materials</div>        
-        </div>
+        <table class="items">
+          <thead>
+            <tr>
+              <th class="code">Delivery Terms</th>
+              <th class="code">Payment terms</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in quotation.Items">
+              <td class="code">prova</td>
+              <td class="code">prova2</td>
+            </tr>
+          </tbody>
+        </table>
 
         
         <div class="footer">
