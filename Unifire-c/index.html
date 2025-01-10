@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Uni-Fire S.r.l.</title>
+
+    <!-- A template for showing a quotation in a Custom Widget in Grist. -->
+    <!-- Uses Vue.js, moment, and the Grist Plugin API -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="https://docs.getgrist.com/grist-plugin-api.js"></script>
+
+    <script src="quotation.js?ver=11"></script>
+    <script src="exampleData.js"></script>
+
+    <link rel="stylesheet" href="quotation.css?ver=17">
+  </head>
+  <body>
+    <div id="app">
+      <div class="status" v-if="status">
+        <template v-if="status === 'waiting'">
+          <p>Waiting for data...</p>
+          <ul>
+            <li v-bind:class="[tableConnected ? 'done' : '']">I need <b>read table</b> access.</li>
+            <li v-bind:class="[haveRows ? 'done' : '']">I need at least one row of data.</li>
+            <li v-bind:class="[rowConnected ? 'done' : '']">I need <b>Select By</b> set.</li>
+          </ul>
+          <p>Examples:</p>
+          <ul>
+            <li><a class="button" href="index.html?demo=1">A filled out quotation</a></li>
+            <li><a class="button" href="index.html?labels=1">A labelled quotation</a></li>
+          </ul>
+        </template>
+        <template v-else>
+          {{ status }}
+        </template>
+      </div>
+      <template v-if="quotation">
+        <div class="top first-page">
+          <div class="block">
+            <div class="header">
+              <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
+            </div>
+              <div class="info" style="color: black; font-weight: normal; font-size: 10px">
+                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">quotation Number</span> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">#{{ quotation.Number }}</span>
+              </div>
+              <div class="info" v-if="quotation.Issued" style="color: black; font-size: 100%">
+                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Emission Date</div> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Issued | asDate }}</span>
+              </div>
+              <div class="info" v-if="quotation.Due" style="color: black; font-size: 100%">
+                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Valid Since</div> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Due | asDate }}</span>
+              </div>
+              <div class="info" style="color: black; font-size: 100%">
+                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Job Reference</span> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Reference }}</span>
+              </div>
+            </div>
+
+          <div class="supplier">
+            <div v-for="business in (quotation.Invoicer ? [quotation.Invoicer] : [])">
+              <template v-if="typeof(business) === 'string'">
+                <div class="address newlined">{{ business }}</div>
+              </template>
+              <template v-else>
+                <div class="address">
+                  <span class="name">{{ business.Name }}</span><br />
+                  {{ business.Street1 }}<br />
+                  <template v-if="business.Street2">
+                    {{ business.Street2 }}<br />
+                  </template>
+                  {{ business.City }} {{ business.State }} {{ business.Zip }}<br />
+                  <template v-if="business.Country">
+                    {{ business.Country }}<br />
+                  </template>
+                </div>
+                <template v-if="business.Email">
+                  <div class="email">{{ business.Email }}</div>
+                </template>
+                <template v-if="business.Phone">
+                  <div class="phone">{{ business.Phone }}</div>
+                </template>
+                <template v-if="business.Website">
+                  <div class="website"><a v-bind:href="business.Url">{{ business.Website }}</a></div>
+                </template>
+              </template>
+            </div>
+          </div>
+        </div>
+
+        <div class="client" v-for="business in (quotation.Client ? [quotation.Client] : [])">
+          <div class="title">Client</div>
+          <div class="details">
+            <template v-if="typeof(business) === 'string'">
+              <div class="newlined">{{ business }}</div>
+            </template>
+            <template v-else>
+              <div>{{ business.Name }}</div>
+              <template v-if="business.Street1">
+                {{ business.Street1 }},
+              </template>
+              <template v-if="business.Street2">
+                {{ business.Street2 }},
+              </template>
+              {{ business.City }} {{ business.State }} {{ business.Zip }}
+              <template v-if="business.Country">
+                <br />{{ business.Country }}
+              </template>
+            </template>
+          </div>
+        </div>
+
+        <div class="page-break-container">
+          <p class="additional-text">Your additional text here.</p>
+          <p class="additional-text">
+            <strong>Oggetto:</strong> Riferimento Vs. Commessa : {{ quotation.Reference }}
+          </p>
+          <p class="additional-text">
+            Gentile {{ quotation.Client ? quotation.Client.Name : 'Nome del Cliente' }},
+          </p>
+          <p class="additional-text">
+            La ringraziamo per averci contattato e per l’interesse dimostrato verso i nostri prodotti e servizi.
+          </p>
+          <p class="additional-text">
+            Siamo lieti di inviarle la nostra proposta commerciale; Troverà di seguito tutti i dettagli della nostra offerta, comprese le specifiche tecniche, i prezzi e i tempi di consegna.
+          </p>
+          <p class="additional-text">
+            Rimaniamo a disposizione per eventuali chiarimenti o per personalizzare ulteriormente la proposta in base alle sue necessità specifiche.
+          </p>
+          <p class="additional-text">
+            In attesa di un suo gentile riscontro, le auguriamo una buona giornata.
+          </p>
+        </div>
+
+        <div class="page-break"></div>
+        <div class="header">
+                  <div class="top first-page">
+          <div class="block">
+            <div class="header">
+              <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
+            </div>
+              <div class="info" style="color: black; font-weight: normal; font-size: 10px">
+                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">quotation Number</span> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">#{{ quotation.Number }}</span>
+              </div>
+              <div class="info" v-if="quotation.Issued" style="color: black; font-size: 100%">
+                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Emission Date</div> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Issued | asDate }}</span>
+              </div>
+              <div class="info" v-if="quotation.Due" style="color: black; font-size: 100%">
+                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Valid Since</div> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Due | asDate }}</span>
+              </div>
+              <div class="info" style="color: black; font-size: 100%">
+                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Job Reference</span> 
+                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Reference }}</span>
+              </div>
+            </div>
+
+          <div class="supplier">
+            <div v-for="business in (quotation.Invoicer ? [quotation.Invoicer] : [])">
+              <template v-if="typeof(business) === 'string'">
+                <div class="address newlined">{{ business }}</div>
+              </template>
+              <template v-else>
+                <div class="address">
+                  <span class="name">{{ business.Name }}</span><br />
+                  {{ business.Street1 }}<br />
+                  <template v-if="business.Street2">
+                    {{ business.Street2 }}<br />
+                  </template>
+                  {{ business.City }} {{ business.State }} {{ business.Zip }}<br />
+                  <template v-if="business.Country">
+                    {{ business.Country }}<br />
+                  </template>
+                </div>
+                <template v-if="business.Email">
+                  <div class="email">{{ business.Email }}</div>
+                </template>
+                <template v-if="business.Phone">
+                  <div class="phone">{{ business.Phone }}</div>
+                </template>
+                <template v-if="business.Website">
+                  <div class="website"><a v-bind:href="business.Url">{{ business.Website }}</a></div>
+                </template>
+              </template>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <table class="items" v-if="quotation.Co2 && quotation.Co2.length > 0">
+          <thead>
+            <tr>
+              <th class="number">Area</th>
+              <th class="number">Standard</th>
+              <th class="number">Length (m)</th>
+              <th class="number">Width (m)</th>
+              <th class="number">Height (m)</th>
+              <th class="number">Area m²</th>
+              <th class="number">VOLUME m³ - 5%</th>
+              <th class="number">FLOODING FACTOR</th>
+              <th class="number">CO2 Design Qty</th>
+              <th class="number">CYLINDER Qty</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in quotation.Co2" :key="item.id">
+              <td class="number">{{ item.Area }}</td>
+              <td class="number">{{ item.Standard }}</td>
+              <td class="number">{{ item.Lenght }}</td>
+              <td class="number">{{ item.Width }}</td>
+              <td class="number">{{ item.Height }}</td>
+              <td class="number">{{ item.Area2 }}</td>
+              <td class="number">{{ item.VOLUME5Perc }}</td>
+              <td class="number">{{ item.FLOODING_FACTOR }}</td>
+              <td class="number">{{ item.CO2_DES_qty }}</td>
+              <td class="number">{{ item.CYLIDER_Qty }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="items">
+          <thead>
+            <tr>
+              <th class="code2">Code</th>
+              <th class="Description">Description</th>
+              <th class="money">List Price</th>
+              <th class="number">Disc.(%)</th>
+              <th class="number">Q.ty</th>
+              <th class="money">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in quotation.Items">
+              <td class="code2">{{ item.Code2 }}</td>
+              <td class="Description">{{ item.Description }}</td>
+              <td class="money">{{ item.Price | currency }}</td>
+              <td class="number">{{ item.Discount }}</td>
+              <td class="number">{{ item.Quantity }}</td>
+              <td class="money">{{ item.Total | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="summary">
+          <div class="space">
+          </div>
+          <div class="part">
+            <div class="title">Subtotal</div>
+            <div class="details">{{ quotation.Subtotal | currency }}</div>
+          </div>
+          <div class="part">
+            <div class="title">VAT</div>
+            <div class="details">{{ quotation.Taxes | currency }}</div>
+          </div>
+          <div class="total">
+            <div class="title">Total</div>
+            <div class="details">{{ quotation.Total | currency }}</div>
+          </div>
+        </div>
+
+        <div class="notes">
+          <p>Note:</p>
+          <ul>
+            <li>Due to the unstable situation we inform that the offer may be changed at any time both in price and delivery time. We are not able to predict the further development of the market and its impact on the cost of raw materials and other factors affecting the execution of contracts. Thank you for your understanding.</li>
+          </ul>
+        </div>
+
+        <div class="footer">
+          <div class="thanks">
+            Grazie - Thank you!
+          </div>
+        </div>
+
+        <div class="print">
+          <a href="javascript:window.print()">Print</a>
+        </div>
+      </template>
+    </div>
+      <div class="footer">
+        <div class="company-info">
+          <p><strong>uni-fire S.r.l.</strong> - Sede legale: via Ghisalba, 13 – 20021 Bollate (MI)</p>
+          <p>C.F. – P. IVA 08649800961; REA: MI – 2042486; Cap. Soc. 10.000,00 euro i.v.</p>
+          <p>
+          P.E.C. <a href="mailto:uni-fire@legalmail.it">uni-fire@legalmail.it</a> ; 
+          Mail: <a href="mailto:info@uni-fire.it">info@uni-fire.it</a>
+          </p>
+        </div>
+
+      </div>
+  </body>
+</html>
