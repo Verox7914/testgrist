@@ -237,7 +237,7 @@ div.summary::after {
 
 .note {
   text-align: Left;
-  color: #000000;
+  color: black;
   font-size: 75%;
   border: 1px solid #16a085;
   page-break-inside: avoid;
