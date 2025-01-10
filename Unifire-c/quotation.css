@@ -30,7 +30,7 @@ body {
 }
 
 .info .meta::after {
-  /*content: " :";*/
+  content: " :";
   text-transform: uppercase;
   color: black;
   font-weight: normal;
