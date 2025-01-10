@@ -277,18 +277,21 @@
           </ul>
         </div>
 
-        <table class="items">
-          <thead>
-            <tr>
-              <th class="code">Delivery Terms</th>
-              <th class="code">Payment terms</th>
-            </tr>
-          </thead>
-            <tr v-for="item in quotation.Items">
-              <td class="code">prova</td>
-              <td class="code">prova2</td>
-            </tr>
-        </table>
+            <table class="items">
+              <thead>
+                <tr>
+                  <th class="code">Delivery Terms</th>
+                  <th class="code">Payment Terms</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <!-- Sostituisci "item.deliveryTerms" e "item.paymentTerms" con i dati reali -->
+                  <td class="code">{{ quotation.deliveryTerms }}</td>
+                  <td class="code">{{ quotation.paymentTerms }}</td>
+                </tr>
+              </tbody>
+            </table>
 
         
         <div class="footer">
