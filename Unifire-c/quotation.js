@@ -17,6 +17,9 @@ function addDemo(row) {
     if (!('Note' in row)) { row.Note = '(Anything in a Note1 column goes here)'; }
     if (!('Note2' in row)) { row.Note2 = '(Anything in a Note2 column goes here)'; }
     if (!('Note3' in row)) { row.Note3 = '(Anything in a Note3 column goes here)'; }
+    if (!('deliveryTerms' in row)) { row.deliveryTerms = '(Anything in a deliveryTerms column goes here)'; }
+    if (!('paymentTerms' in row)) { row.paymentTerms = '(Anything in a paymentTerms column goes here)'; }
+    
   }
   if (!row.Invoicer) {
     row.Invoicer = {
