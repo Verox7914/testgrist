@@ -18,6 +18,12 @@ body {
   font-weight: bold;
 }
 
+.datas {
+  color: black;
+  font-size: 70%;
+  font-weight: bold;
+}
+
 .header .meta {
   text-transform: uppercase;
   color: black;
