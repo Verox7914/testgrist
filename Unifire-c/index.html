@@ -135,28 +135,28 @@
 
         <div class="page-break"></div>
         <div class="header">
-                  <div class="top first-page">
+          <div class="top first-page">
           <div class="block">
             <div class="header">
               <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire.jpg?raw=true" alt="Uni-Fire S.r.l.">
             </div>
-              <div class="info" style="color: black; font-weight: normal; font-size: 10px">
-                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">quotation Number</span> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">#{{ quotation.Number }}</span>
-              </div>
-              <div class="info" v-if="quotation.Issued" style="color: black; font-size: 100%">
-                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Emission Date</div> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Issued | asDate }}</span>
-              </div>
-              <div class="info" v-if="quotation.Due" style="color: black; font-size: 100%">
-                <div class="meta date-tag" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Valid Since</div> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Due | asDate }}</span>
-              </div>
-              <div class="info" style="color: black; font-size: 100%">
-                <span class="meta" style="text-transform: uppercase; color: black; font-weight: normal; font-size: 10px;">Job Reference</span> 
-                <span style="text-transform: uppercase; color: black; font-weight: bold; font-size: 10px;">{{ quotation.Reference }}</span>
-              </div>
+            <div class="info">
+              <span class="meta">quotation Number</span>
+               <span class="datas">#{{ quotation.Number }}
+               </div>
+            <div class="info" v-if="quotation.Issued">
+              <span class="meta date-tag">Emission Date</span>
+              <span class="datas"> {{ quotation.Issued | asDate }}
             </div>
+            <div class="info" v-if="quotation.Due">
+              <span class="meta date-tag">Valid Since</span>
+              <span class="datas"> {{ quotation.Due | asDate }}
+            </div>
+            <div class="info">
+              <span class="meta">Job Reference</span>
+              <span class="datas"> #{{ quotation.Reference }}
+            </div>
+          </div>
 
           <div class="supplier">
             <div v-for="business in (quotation.Invoicer ? [quotation.Invoicer] : [])">
