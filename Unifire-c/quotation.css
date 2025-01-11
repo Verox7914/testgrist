@@ -305,7 +305,7 @@ div.instructions, .newlined, p.note {
   }
 
   body {
-    margin-bottom: 120px; /* Spazio sufficiente per il footer fisso */
+    margin-bottom: 70px; /* Spazio sufficiente per il footer fisso */
   }
 }
 
