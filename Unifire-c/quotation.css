@@ -307,7 +307,7 @@ div.instructions, .newlined, p.note {
   body {
     margin-bottom: 70px; /* Spazio sufficiente per il footer fisso */
   }
-}
+
 
 div.print {
   position: fixed;
@@ -444,4 +444,5 @@ div.column-name {
 
 .footer .company-info a:hover {
   text-decoration: underline;
+}
 }
