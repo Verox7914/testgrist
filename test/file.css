@@ -1,1 +1,67 @@
+/* Stile generale per la pagina */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
+header, footer {
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+header {
+    top: 0;
+}
+
+footer {
+    bottom: 0;
+}
+
+main {
+    margin: 60px 20px 60px 20px; /* Spazio per evitare sovrapposizioni con header e footer */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Stile specifico per la stampa */
+@media print {
+    header, footer {
+        position: fixed;
+        background-color: white; /* Opzionale, per garantire visibilità in stampa */
+        -webkit-print-color-adjust: exact; /* Per assicurare che i colori siano stampati */
+        color: black;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+    }
+
+    header {
+        top: 0;
+    }
+
+    footer {
+        bottom: 0;
+    }
+
+    main {
+        margin: 100px 0 80px 0; /* Margini per non sovrapporsi a header e footer */
+    }
+
+    table {
+        page-break-inside: avoid; /* Evita che la tabella venga spezzata su due pagine */
+    }
+}
