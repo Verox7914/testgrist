@@ -42,19 +42,19 @@
               <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire2.jpg?raw=true" alt="Uni-Fire S.r.l.">
             </div>
             <div class="info">
-              <span class="meta">quotation Number</span>
+              <span class="meta">Numero Quotazione</span>
                <span class="datas">#{{ quotation.Number }}
                </div>
             <div class="info" v-if="quotation.Issued">
-              <span class="meta date-tag">Emission Date</span>
+              <span class="meta date-tag">Data Emissione</span>
               <span class="datas"> {{ quotation.Issued | asDate }}
             </div>
             <div class="info" v-if="quotation.Due">
-              <span class="meta date-tag">Valid Since</span>
+              <span class="meta date-tag">Valida fino a</span>
               <span class="datas"> {{ quotation.Due | asDate }}
             </div>
             <div class="info">
-              <span class="meta">Job Reference</span>
+              <span class="meta">Rif. commessa</span>
               <span class="datas"> #{{ quotation.Reference }}
             </div>
           </div>
@@ -91,7 +91,7 @@
         </div>
 
         <div class="client" v-for="business in (quotation.Client ? [quotation.Client] : [])">
-          <div class="title">Client</div>
+          <div class="title">Cliente</div>
           <div class="details">
             <template v-if="typeof(business) === 'string'">
               <div class="newlined">{{ business }}</div>
@@ -141,19 +141,19 @@
               <img src="https://github.com/Verox7914/testgrist/blob/main/commercial/image/unifire2.jpg?raw=true" alt="Uni-Fire S.r.l.">
             </div>
             <div class="info">
-              <span class="meta">quotation Number</span>
+              <span class="meta">Numero Quotazione</span>
                <span class="datas">#{{ quotation.Number }}
                </div>
             <div class="info" v-if="quotation.Issued">
-              <span class="meta date-tag">Emission Date</span>
+              <span class="meta date-tag">Data Emissione</span>
               <span class="datas"> {{ quotation.Issued | asDate }}
             </div>
             <div class="info" v-if="quotation.Due">
-              <span class="meta date-tag">Valid Since</span>
+              <span class="meta date-tag">Valida fino a</span>
               <span class="datas"> {{ quotation.Due | asDate }}
             </div>
             <div class="info">
-              <span class="meta">Job Reference</span>
+              <span class="meta">Rif. commessa</span>
               <span class="datas"> #{{ quotation.Reference }}
             </div>
           </div>
@@ -195,14 +195,14 @@
             <tr>
               <th class="number">Area</th>
               <th class="number">Standard</th>
-              <th class="number">Length (m)</th>
-              <th class="number">Width (m)</th>
-              <th class="number">Height (m)</th>
+              <th class="number">Lunghezza (m)</th>
+              <th class="number">Larghezza (m)</th>
+              <th class="number">Altezza (m)</th>
               <th class="number">Area m²</th>
               <th class="number">VOLUME m³ - 5%</th>
-              <th class="number">FLOODING FACTOR</th>
-              <th class="number">CO2 Design Qty</th>
-              <th class="number">CYLINDER Qty</th>
+              <th class="number">FATTORE DI SATURAZIONE</th>
+              <th class="number">Q.TA CO2 DI PROGETTO</th>
+              <th class="number">NUM. BOMBOLE</th>
             </tr>
           </thead>
           <tbody>
@@ -224,12 +224,12 @@
         <table class="items">
           <thead>
             <tr>
-              <th class="code2">Code</th>
-              <th class="Description">Description</th>
-              <th class="money">List Price</th>
-              <th class="number">Disc.(%)</th>
-              <th class="number">Q.ty</th>
-              <th class="money">Total</th>
+              <th class="code2">Codice</th>
+              <th class="Description">Descrizione</th>
+              <th class="money">Listino</th>
+              <th class="number">sconto (%)</th>
+              <th class="number">Q.ta'</th>
+              <th class="money">Totale</th>
             </tr>
           </thead>
           <tbody>
@@ -248,15 +248,15 @@
           <div class="space">
           </div>
           <div class="part">
-            <div class="title">Subtotal</div>
+            <div class="title">Subtotale</div>
             <div class="details">{{ quotation.Subtotal | currency }}</div>
           </div>
           <div class="part">
-            <div class="title">VAT</div>
+            <div class="title">iva</div>
             <div class="details">{{ quotation.Taxes | currency }}</div>
           </div>
           <div class="total">
-            <div class="title">Total</div>
+            <div class="title">Totale</div>
             <div class="details">{{ quotation.Total | currency }}</div>
           </div>
         </div>
@@ -264,8 +264,8 @@
        <table class="items">
          <thead>
                 <tr>
-                  <th class="code">Delivery Terms</th>
-                  <th class="code">Payment Terms</th>
+                  <th class="code">Termini di consegna</th>
+                  <th class="code">Termini di pagamento</th>
                 </tr>
               </thead>
               <tbody>
@@ -280,7 +280,7 @@
         <div class="notes">
           <p>Note:</p>
           <ul>
-            <li>Due to the unstable situation we inform that the offer may be changed at any time both in price and delivery time. We are not able to predict the further development of the market and its impact on the cost of raw materials and other factors affecting the execution of contracts. Thank you for your understanding.</li>
+            <li>A causa della situazione instabile, informiamo che l'offerta può essere modificata in qualsiasi momento sia per quanto riguarda il prezzo che i tempi di consegna. Non siamo in grado di prevedere l'ulteriore sviluppo del mercato e il suo impatto sul costo delle materie prime e altri fattori che influenzano l'esecuzione dei contratti. Grazie per la vostra comprensione</li>
             <template v-if="quotation.Note">
             <li>{{ quotation.Note }}</li>
             </template>
