@@ -4,7 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina con Header e Footer Stampabili</title>
-    <link rel="stylesheet" href="file.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #f4f4f4;
+            padding: 20px;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f4f4f4;
+            padding: 10px;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        main {
+            margin-top: 80px; /* Spazio per evitare sovrapposizione con header */
+            margin-bottom: 60px; /* Spazio per evitare sovrapposizione con footer */
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
